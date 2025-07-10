@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voxen Computers</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3B82F6',
+            background: '#0f172a',
+            light: '#ffffff'
+          },
+          fontFamily: {
+            sans: ['Segoe UI', 'sans-serif']
+          },
+          keyframes: {
+            scroll: {
+              '0%': { transform: 'translateX(0)' },
+              '100%': { transform: 'translateX(-50%)' }
+            },
+            growIn: {
+              '0%': { transform: 'scale(0.8)', opacity: 0 },
+              '100%': { transform: 'scale(1)', opacity: 1 }
+            }
+          },
+          animation: {
+            scroll: 'scroll 30s linear infinite',
+            growIn: 'growIn 0.3s ease-out forwards'
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .glass {
+      background-color: rgba(255, 255, 255, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .glass:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body class="bg-background text-light font-sans">
+
+  <!-- Hero -->
+  <section class="flex flex-col justify-center items-center text-center px-6 pt-6 space-y-6">
+    <h1 class="text-5xl md:text-6xl font-bold text-primary">Voxen Computers</h1>
+    <p class="text-xl text-gray-300">Expert PC Build Guidance & Fully Assembled Systems</p>
+    <a href="#builds" class="bg-primary text-white px-6 py-3 rounded-full text-lg shadow-lg hover:scale-105 transition">See Sample Builds</a>
+  </section>
+
+  <!-- About Me -->
+  <section class="px-6 py-20 bg-background text-center">
+    <h2 class="text-3xl font-bold text-white mb-4">About Me</h2>
+    <p class="text-gray-300 max-w-3xl mx-auto text-lg">
+      I breathe thermal paste fumes and cable manage in my dreams. I don’t just build PCs — I architect pixel-slaying machines and render-melting rigs for fun.<br><br>
+      Whether you're trying to run CSGO at 400 FPS or edit 4K cat videos, I’ll spec and build you the kind of setup that makes your PSU blush.<br><br>
+      People call it “tech support,” I call it a religion. If it’s got a chipset, I’ve judged it. If it’s got RGB, I’ve already synced it. Welcome to Voxen — where performance isn’t optional, it’s mandatory.
+    </p>
+  </section>
+
+  <!-- What You Get -->
+  <section class="px-6 py-20 bg-gray-950 text-center">
+    <h2 class="text-3xl font-bold text-white mb-4">What You Get When You Pay</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div class="glass p-6 rounded-xl">
+        <h3 class="text-xl font-bold text-primary mb-2">⚙️ Custom Builds</h3>
+        <p class="text-gray-300 text-sm">Tailored rigs that suit your games, apps & budget.</p>
+      </div>
+      <div class="glass p-6 rounded-xl">
+        <h3 class="text-xl font-bold text-primary mb-2">🧠 One-on-One Advice</h3>
+        <p class="text-gray-300 text-sm">Confused between Intel & AMD? I’ll give you the truth — no brand bias.</p>
+      </div>
+      <div class="glass p-6 rounded-xl">
+        <h3 class="text-xl font-bold text-primary mb-2">📦 Fully Assembled PCs</h3>
+        <p class="text-gray-300 text-sm">Built and tested — shipping support available (not included in prices).</p>
+      </div>
+      <div class="glass p-6 rounded-xl">
+        <h3 class="text-xl font-bold text-primary mb-2">🧰 Upgrade Guides</h3>
+        <p class="text-gray-300 text-sm">Already own a system? I’ll help you extract every watt.</p>
+      </div>
+      <div class="glass p-6 rounded-xl">
+        <h3 class="text-xl font-bold text-primary mb-2">💻 Laptop Buying Guide</h3>
+        <p class="text-gray-300 text-sm">Need the best laptop for your budget & use? I’ve got you.</p>
+      </div>
+      <div class="glass p-6 rounded-xl">
+        <h3 class="text-xl font-bold text-primary mb-2">🎯 Personalized Part List</h3>
+        <p class="text-gray-300 text-sm">Built for your exact needs, budget & use-case</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sample Builds -->
+<section id="builds" class="px-6 py-20 bg-background text-center relative z-10">
+  <h2 class="text-3xl font-bold text-white mb-8">Sample Builds</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+
+    <div class="glass p-6 rounded-xl transition transform hover:scale-105 hover:shadow-2xl cursor-pointer" onclick="openBuild(0)">
+      <h3 class="text-xl font-bold text-primary mb-2">💸 Budget Beast – ₹30K</h3>
+      <p class="text-sm text-gray-400">R5 5500 | RX 580 | 16GB RAM | 512GB SSD</p>
+      <img src="pc1.png" alt="Budget Beast" class="mx-auto h-48 object-contain mt-4 hover:scale-105 transition duration-300 ease-in-out">
+      <button class="mt-4 bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-blue-600 transition transform hover:scale-105">View More</button>
+    </div>
+
+    <div class="glass p-6 rounded-xl transition transform hover:scale-105 hover:shadow-2xl cursor-pointer" onclick="openBuild(1)">
+      <h3 class="text-xl font-bold text-primary mb-2">⚖️ Midrange Pro – ₹55K</h3>
+      <p class="text-sm text-gray-400">i5 13400F | RTX 4060 | 16GB RAM | 1TB SSD</p>
+      <img src="pc2.png" alt="Midrange Pro" class="mx-auto h-48 object-contain mt-4 hover:scale-105 transition duration-300 ease-in-out">
+      <button class="mt-4 bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-blue-600 transition transform hover:scale-105">View More</button>
+    </div>
+
+    <div class="glass p-6 rounded-xl transition transform hover:scale-105 hover:shadow-2xl cursor-pointer" onclick="openBuild(2)">
+      <h3 class="text-xl font-bold text-primary mb-2">👑 Monster Multitasker – ₹1.5L</h3>
+      <p class="text-sm text-gray-400">i7 14700K | RTX 4070 | 32GB DDR5 | 2TB SSD</p>
+      <img src="pc3.png" alt="Monster Multitasker" class="mx-auto h-48 object-contain mt-4 hover:scale-105 transition duration-300 ease-in-out">
+      <button class="mt-4 bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-blue-600 transition transform hover:scale-105">View More</button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Modal Build Viewer -->
+<div id="buildModal" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md flex justify-center items-center z-50 hidden">
+  <div class="bg-gray-900 bg-opacity-90 text-white rounded-2xl max-w-6xl w-full mx-4 p-8 grid grid-cols-1 md:grid-cols-2 gap-6 animate-scaleIn relative">
+    <button onclick="closeBuild()" class="absolute top-4 right-6 text-xl text-gray-300 hover:text-white">✕</button>
+
+    <!-- Text Side -->
+    <div>
+      <h3 id="buildTitle" class="text-2xl font-bold text-primary mb-4">Build Title</h3>
+      <h4 class="text-lg font-semibold mb-2">Specs</h4>
+      <ul id="buildSpecs" class="list-disc ml-5 space-y-1 mb-4 text-gray-300 text-sm"></ul>
+      <h4 class="text-lg font-semibold mb-2">Gaming Performance</h4>
+      <ul id="buildPerformance" class="list-disc ml-5 space-y-1 mb-4 text-gray-300 text-sm"></ul>
+      <h4 class="text-lg font-semibold mb-2">Benchmarks</h4>
+      <ul id="buildBenchmarks" class="list-disc ml-5 space-y-1 text-gray-300 text-sm"></ul>
+    </div>
+
+    <!-- Image Side -->
+    <div class="flex items-center justify-center">
+      <img id="buildImage" src="" alt="PC Image" class="rounded-xl w-full max-w-sm">
+    </div>
+  </div>
+</div>
+
+<script>
+  const builds = [
+    {
+      title: "💸 Budget Beast – ₹30K",
+      specs: [
+        "CPU: Ryzen 5 5500",
+        "GPU: RX 580 8GB",
+        "RAM: 16GB DDR4",
+        "Storage: 512GB NVMe SSD",
+        "Motherboard: MSI B450M-A Pro II",
+        "PSU: Ant Eco500W",
+        "Cooler: Stock",
+        "Case: Ant Esports Elite 1100"
+      ],
+      performance: [
+        "Valorant: 250+ FPS",
+        "GTA V: 60+ FPS (High 1080p)",
+        "Cyberpunk 2077: 40 FPS (Low 1080p)"
+      ],
+      benchmarks: [
+        "Cinebench R23 (Multi): ~7500",
+        "3DMark Time Spy: ~4500"
+      ],
+      image: "pc1.png"
+    },
+    {
+      title: "⚖️ Midrange Pro – ₹60K",
+      specs: [
+        "CPU: Intel i5 13400F",
+        "GPU: RTX 4060 8GB",
+        "RAM: 16GB DDR4",
+        "Storage: 1TB NVMe SSD",
+        "Motherboard: Gigabyte B760M-E",
+        "PSU: 550W",
+        "Cooler: Antec A400i",
+        "Case: Ant Esports ICE 100"
+      ],
+      performance: [
+        "Valorant: 300+ FPS",
+        "GTA V: 90+ FPS (Very High 1080p)",
+        "Cyberpunk 2077: 60 FPS (high 1080p DLSS)"
+      ],
+      benchmarks: [
+        "Cinebench R23 (Multi): ~12500",
+        "3DMark Time Spy: ~8500"
+      ],
+      image: "pc2.png"
+    },
+    {
+      title: "👑 Monster Multitasker – ₹1.5L",
+      specs: [
+        "CPU: Intel i7 14700K",
+        "GPU: RTX 4070 12GB",
+        "RAM: 32GB DDR5",
+        "Storage: 2TB NVMe SSD",
+        "Motherboard: Z790",
+        "PSU: 850W Gold",
+        "Cooler: CoolerMaster 360 Atmos AIO",
+        "Case: MSI MPG Velox 100R"
+      ],
+      performance: [
+        "Valorant: 400+ FPS",
+        "GTA V: 120 FPS (Ultra 1440p)",
+        "Cyberpunk 2077: 80 FPS (High 1440p DLSS)"
+      ],
+      benchmarks: [
+        "Cinebench R23 (Multi): ~28500",
+        "3DMark Time Spy: ~13000"
+      ],
+      image: "pc3.png"
+    }
+  ];
+
+  function openBuild(index) {
+    const build = builds[index];
+    document.getElementById("buildTitle").innerText = build.title;
+    document.getElementById("buildImage").src = build.image;
+
+    const specs = document.getElementById("buildSpecs");
+    specs.innerHTML = "";
+    build.specs.forEach(item => {
+      const li = document.createElement("li");
+      li.innerText = item;
+      specs.appendChild(li);
+    });
+
+    const perf = document.getElementById("buildPerformance");
+    perf.innerHTML = "";
+    build.performance.forEach(item => {
+      const li = document.createElement("li");
+      li.innerText = item;
+      perf.appendChild(li);
+    });
+
+    const benches = document.getElementById("buildBenchmarks");
+    benches.innerHTML = "";
+    build.benchmarks.forEach(item => {
+      const li = document.createElement("li");
+      li.innerText = item;
+      benches.appendChild(li);
+    });
+
+    document.getElementById("buildModal").classList.remove("hidden");
+  }
+
+  function closeBuild() {
+    document.getElementById("buildModal").classList.add("hidden");
+  }
+</script>
+
+<!-- Overlay Div (put this just before closing </body> tag) -->
+<div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+
+<!-- JS Script (put this just before closing </body> tag, after overlay) -->
+<script>
+  const tiles = document.querySelectorAll('[data-index]');
+  const overlay = document.getElementById('overlay');
+  let activeDropdown = null;
+
+  tiles.forEach(tile => {
+    tile.addEventListener('click', () => {
+      const index = tile.getAttribute('data-index');
+      const dropdown = document.querySelector(`[data-dropdown="${index}"]`);
+
+      if (activeDropdown && activeDropdown !== dropdown) {
+        closeDropdown(activeDropdown);
+      }
+
+      if (dropdown.classList.contains('opacity-100')) {
+        closeDropdown(dropdown);
+        overlay.classList.add('hidden');
+        activeDropdown = null;
+      } else {
+        openDropdown(dropdown);
+        overlay.classList.remove('hidden');
+        activeDropdown = dropdown;
+      }
+    });
+  });
+
+  overlay.addEventListener('click', () => {
+    if (activeDropdown) {
+      closeDropdown(activeDropdown);
+      overlay.classList.add('hidden');
+      activeDropdown = null;
+    }
+  });
+
+  function openDropdown(dropdown) {
+    dropdown.classList.remove('opacity-0', 'pointer-events-none');
+    dropdown.classList.add('opacity-100');
+  }
+
+  function closeDropdown(dropdown) {
+    dropdown.classList.add('opacity-0', 'pointer-events-none');
+    dropdown.classList.remove('opacity-100');
+  }
+</script>
+
+
+  <!-- Customer Reviews -->
+  <section class="px-6 py-20 bg-background overflow-hidden">
+    <h2 class="text-3xl font-bold text-white text-center mb-8">What Customers Say</h2>
+    <div class="w-full overflow-hidden">
+      <div class="flex gap-6 w-max animate-scroll">
+        <div class="flex gap-6">
+          <div class="min-w-[300px] bg-gray-800 rounded-xl p-4 text-white">
+            <p>“Got a beast ₹50K rig. Valorant runs like butter. Respect!”</p>
+            <p class="mt-2 text-sm text-gray-400">– Akash, Delhi</p>
+          </div>
+          <div class="min-w-[300px] bg-gray-800 rounded-xl p-4 text-white">
+            <p>“Bro suggested better parts than MDComputers guy 💀”</p>
+            <p class="mt-2 text-sm text-gray-400">– Ravi, Jaipur</p>
+          </div>
+          <div class="min-w-[300px] bg-gray-800 rounded-xl p-4 text-white">
+            <p>“Didn’t even know what a PSU was. Now I flex benchmarks.”</p>
+            <p class="mt-2 text-sm text-gray-400">– Tanya, Pune</p>
+          </div>
+        </div>
+        <div class="flex gap-6">
+          <div class="min-w-[300px] bg-gray-800 rounded-xl p-4 text-white">
+            <p>“Best ₹199 I ever spent. Nailed the part list, zero bottlenecks.”</p>
+            <p class="mt-2 text-sm text-gray-400">– Dinesh, Hyderabad</p>
+          </div>
+          <div class="min-w-[300px] bg-gray-800 rounded-xl p-4 text-white">
+            <p>“Laptop buying guide was 🔥 Got a perfect gaming laptop.”</p>
+            <p class="mt-2 text-sm text-gray-400">– Mehul, Surat</p>
+          </div>
+          <div class="min-w-[300px] bg-gray-800 rounded-xl p-4 text-white">
+            <p>“Didn’t upsell, didn’t bullshit. Just pure performance builds.”</p>
+            <p class="mt-2 text-sm text-gray-400">– Aarav, Lucknow</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section (Collapsible) -->
+  <section class="px-6 py-20 bg-gray-950 text-white">
+    <h2 class="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+    <div class="max-w-3xl mx-auto space-y-4">
+      <details class="bg-gray-800 p-4 rounded-xl cursor-pointer">
+        <summary class="font-semibold text-lg text-primary">💸 Do you charge for just part picking?</summary>
+        <p class="text-gray-300 mt-2">Yes. For any custom build request where I help you choose the parts, the charge ranges from ₹99–₹199 depending on system complexity.</p>
+      </details>
+      <details class="bg-gray-800 p-4 rounded-xl cursor-pointer">
+        <summary class="font-semibold text-lg text-primary">📦 Are the prices shown including shipping?</summary>
+        <p class="text-gray-300 mt-2">No. All prices on this site are for consultation and build services only. Shipping is charged separately based on your location and courier.</p>
+      </details>
+      <details class="bg-gray-800 p-4 rounded-xl cursor-pointer">
+        <summary class="font-semibold text-lg text-primary">🛠️ Do you build the PC and ship it?</summary>
+        <p class="text-gray-300 mt-2">Yes, for full builds. After helping you with parts and approval, I’ll assemble, test, and arrange shipping. Charges vary with system price and shipping distance.</p>
+      </details>
+      <details class="bg-gray-800 p-4 rounded-xl cursor-pointer">
+        <summary class="font-semibold text-lg text-primary">💻 Can you help me choose a laptop instead?</summary>
+        <p class="text-gray-300 mt-2">Absolutely. Whether it’s for gaming, editing, or college, I’ll find you the best deal and machine under your budget.</p>
+      </details>
+      <details class="bg-gray-800 p-4 rounded-xl cursor-pointer">
+        <summary class="font-semibold text-lg text-primary">⌛ How long does it take after payment?</summary>
+        <p class="text-gray-300 mt-2">For part picking/laptop guide: under 24 hours. For full builds: 3–5 working days including stress testing and dispatch.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Contact + Footer -->
+  <footer class="px-6 py-12 bg-[#0d1117] text-center">
+    <h2 class="text-3xl font-bold text-white mb-4">Contact Me</h2>
+    <p class="text-gray-300 mb-2">📩 Email: <a href="mailto:raghavprk06@gmail.com" class="text-primary underline">raghavprk06@gmail.com</a></p>
+    <p class="text-gray-300 mb-6">📷 Instagram: <a href="https://www.instagram.com/sherlock_homeless69" target="_blank" class="text-primary underline">@sherlock_homeless69</a></p>
+    <p class="text-sm text-gray-500">&copy; 2025 Voxen Computers. Built for performance.</p>
+  </footer>
+
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
