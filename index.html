@@ -16,7 +16,10 @@
   <meta name="author" content="Voxen Computers">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0f172a">
-
+  
+ <!-- Canonical -->
+  <link rel="canonical" href="https://voxencomputers.github.io/">
+  
   <!-- Open Graph Tags -->
   <meta property="og:title" content="Voxen Computers">
   <meta property="og:description" content="Expertly built gaming PCs – from low budget builds to high-end monsters.">
@@ -81,6 +84,36 @@
   </style>
 </head>
 <body class="bg-background text-light font-sans">
+  <!-- Navigation -->
+  <header class="bg-background text-white fixed top-0 left-0 right-0 z-50 shadow-md">
+    <div class="flex justify-between items-center px-6 py-4">
+      <h1 class="text-xl font-bold">Voxen</h1>
+      <button id="menuToggle" class="md:hidden text-white focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      <nav id="menu" class="hidden md:flex space-x-6">
+        <a href="#builds" class="hover:text-primary">Builds</a>
+        <a href="#pricing" class="hover:text-primary">Pricing</a>
+        <a href="#faq" class="hover:text-primary">FAQ</a>
+        <a href="#contact" class="hover:text-primary">Contact</a>
+      </nav>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden px-6 pb-4">
+      <a href="#builds" class="block py-2 hover:text-primary">Builds</a>
+      <a href="#pricing" class="block py-2 hover:text-primary">Pricing</a>
+      <a href="#faq" class="block py-2 hover:text-primary">FAQ</a>
+      <a href="#contact" class="block py-2 hover:text-primary">Contact</a>
+    </div>
+  </header>
+  <script>
+    document.getElementById('menuToggle').addEventListener('click', function () {
+      const mobileMenu = document.getElementById('mobileMenu');
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+  <body class="bg-background text-light font-sans">
 
   <!-- Hero -->
   <section class="flex flex-col justify-center items-center text-center px-6 pt-6 space-y-6">
@@ -133,7 +166,7 @@
   </section>
   
  <!-- Pricing -->
-<section class="relative px-6 py-20 bg-background text-center">
+<section id="pricing" class="relative px-6 py-20 bg-background text-center">
   <div class="absolute top-4 right-4 text-sm text-gray-400">PC delivery across PAN India</div>
   <h2 class="text-3xl font-bold text-white mb-4">Pricing</h2>
   <p class="text-gray-300 mb-2">Shipping support available for all builds. Shipping charges apply separately based on your location.</p>
@@ -432,7 +465,7 @@
 </section>
 
   <!-- FAQ Section (Collapsible) -->
-  <section class="px-6 py-20 bg-gray-950 text-white">
+  <section id="faq" class="px-6 py-20 bg-gray-950 text-white">
     <h2 class="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
     <div class="max-w-3xl mx-auto space-y-4">
       <details class="bg-gray-800 p-4 rounded-xl cursor-pointer">
@@ -458,11 +491,14 @@
     </div>
   </section>
 
-  <!-- Contact + Footer -->
-  <footer class="px-6 py-12 bg-[#0d1117] text-center">
+   <!-- Contact + Footer -->
+  <footer id="contact" class="px-6 py-12 bg-[#0d1117] text-center">
     <h2 class="text-3xl font-bold text-white mb-4">Contact Me</h2>
-    <p class="text-gray-300 mb-2">📩 Email: <a href="mailto:voxencomputers@gmail.com" class="text-primary underline">voxencomputers@gmail.com</a></p>
-    <p class="text-gray-300 mb-6">📷 Instagram: <a href="https://www.instagram.com/voxencomputers" target="_blank" class="text-primary underline">@Voxen Computers</a></p>
+    <p class="text-gray-300 mb-2"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" alt="Gmail" class="inline w-5 h-5 mr-1 invert" style="display:inline-block; vertical-align:middle;" />
+  Email: <a href="mailto:raghavprk06@gmail.com" class="text-primary underline">raghavprk06@gmail.com</a></p>
+    <p class="text-gray-300 mb-6"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram" class="inline w-5 h-5 mr-1 invert" style="display:inline-block; vertical-align:middle;" />
+Instagram:
+: <a href="https://www.instagram.com/sherlock_homeless69" target="_blank" class="text-primary underline">@sherlock_homeless69</a></p>
     <p class="text-sm text-gray-500">&copy; 2025 Voxen Computers. Built for performance.</p>
   </footer>
 
