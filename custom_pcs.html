@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom PCs - Voxen Computers</title>
+    <link rel="canonical" href="https://www.voxencomputers.shop/custom_pcs.html">
+    <meta name="description" content="Build your dream custom gaming PC with Voxen Computers. Expert guidance, personalized parts, and high-performance builds.">
+    <meta name="keywords" content="custom PC, PC builder India, custom gaming PC, build my own PC, PC assembly, Voxen Computers custom">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html { scroll-behavior: smooth; }
+      body { background-color: #0f172a; color: #ffffff; font-family: 'Segoe UI', sans-serif; }
+      .primary { color: #3B82F6; }
+      .bg-primary { background-color: #3B82F6; }
+      .glass {
+        background-color: rgba(255, 255, 255, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .glass:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Keyframes for header animation */
+      @keyframes slideHeaderUp {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-100%); }
+      }
+      @keyframes slideHeaderDown {
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(0); }
+      }
+
+      /* Header styling and animation application */
+      header {
+        background-color: #0f172a; /* Solid opaque background */
+        position: fixed; /* Keep it fixed at the top */
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 50; /* Ensure it stays above other content */
+        transition: transform 0.5s ease-out; /* Smooth transition for the transform property */
+        transform: translateY(0); /* Ensure header starts visible */
+      }
+      header.hidden-header { /* Class for hiding header */
+        transform: translateY(-100%); /* Slide header up and out of view */
+      }
+    </style>
+</head>
+<body>
+    <header id="mainHeader" class="bg-background text-white fixed top-0 left-0 right-0 z-50 shadow-md">
+        <div class="flex justify-between items-center px-6 py-4">
+          <h1 class="text-xl font-bold">Voxen</h1>
+          <button id="menuToggle" class="md:hidden text-white focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+          <nav id="menu" class="hidden md:flex space-x-6">
+            <a href="index.html" class="hover:text-primary">Home</a>
+            <a href="custom_pcs.html" class="hover:text-primary">Custom PCs</a>
+            <a href="prebuilt_pcs.html" class="hover:text-primary">Prebuilt PCs</a>
+            <a href="laptops.html" class="hover:text-primary">Laptops</a>
+            <a href="index.html#pricing" class="hover:text-primary">Pricing</a>
+            <a href="index.html#faq" class="hover:text-primary">FAQ</a>
+            <a href="#contact" class="hover:text-primary">Contact</a>
+          </nav>
+        </div>
+        <div id="mobileMenu" class="md:hidden hidden px-6 pb-4">
+          <a href="index.html" class="block py-2 hover:text-primary">Home</a>
+          <a href="custom_pcs.html" class="block py-2 hover:text-primary">Custom PCs</a>
+          <a href="prebuilt_pcs.html" class="block py-2 hover:text-primary">Prebuilt PCs</a>
+          <a href="laptops.html" class="block py-2 hover:text-primary">Laptops</a>
+          <a href="index.html#pricing" class="block py-2 hover:text-primary">Pricing</a>
+          <a href="index.html#faq" class="block py-2 hover:text-primary">FAQ</a>
+          <a href="#contact" class="block py-2 hover:text-primary">Contact</a>
+        </div>
+      </header>
+      <script>
+        document.getElementById('menuToggle').addEventListener('click', function () {
+          const mobileMenu = document.getElementById('mobileMenu');
+          mobileMenu.classList.toggle('hidden');
+        });
+        // Header scroll animation logic (repeated for consistency across pages)
+        let lastScrollTop = 0;
+        const mainHeader = document.getElementById('mainHeader');
+        window.addEventListener('scroll', function() {
+            let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            if (currentScroll > lastScrollTop && currentScroll > mainHeader.offsetHeight) {
+                mainHeader.classList.add('hidden-header');
+            } else if (currentScroll < lastScrollTop || currentScroll === 0) {
+                mainHeader.classList.remove('hidden-header');
+            }
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        });
+      </script>
+
+    <main class="pt-24 pb-12 px-6">
+        <section class="text-center mb-12">
+            <h1 class="text-4xl font-bold primary mb-4">Your Dream PC, Built Your Way</h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">At Voxen Computers, we specialize in crafting custom-built PCs tailored to your exact needs, budget, and performance desires. Whether you're a hardcore gamer, a creative professional, or need a powerful workstation, we've got you covered.</p>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div class="glass p-6 rounded-xl text-center">
+                <h2 class="text-2xl font-bold primary mb-2">Personalized Consultation</h2>
+                <p class="text-gray-300">We start with a one-on-one discussion to understand your requirements, games, applications, and budget. No hidden agendas, just honest advice.</p>
+            </div>
+            <div class="glass p-6 rounded-xl text-center">
+                <h2 class="text-2xl font-bold primary mb-2">Optimal Part Selection</h2>
+                <p class="text-gray-300">Leveraging our expertise, we handpick every component to ensure maximum compatibility, performance, and value, avoiding bottlenecks.</p>
+            </div>
+            <div class="glass p-6 rounded-xl text-center">
+                <h2 class="text-2xl font-bold primary mb-2">Expert Assembly & Testing</h2>
+                <p class="text-gray-300">Your PC is meticulously assembled with cable management, stress-tested for stability and performance, and optimized for peak operation.</p>
+            </div>
+            <div class="glass p-6 rounded-xl text-center">
+                <h2 class="text-2xl font-bold primary mb-2">Performance Guaranteed</h2>
+                <p class="text-gray-300">Every custom build comes with our assurance of quality and performance. We stand by our machines.</p>
+            </div>
+            <div class="glass p-6 rounded-xl text-center">
+                <h2 class="text-2xl font-bold primary mb-2">PAN India Shipping</h2>
+                <p class="text-gray-300">Get your custom-built PC delivered safely to your doorstep anywhere in India. (Shipping charges apply)</p>
+            </div>
+            <div class="glass p-6 rounded-xl text-center">
+                <h2 class="text-2xl font-bold primary mb-2">Post-Build Support</h2>
+                <p class="text-gray-300">We offer guidance on drivers, software setup, and future upgrades to keep your system running smoothly.</p>
+            </div>
+        </section>
+
+        <section class="text-center my-12">
+            <h2 class="text-3xl font-bold primary mb-4">Ready to Build Your Custom PC?</h2>
+            <p class="text-xl text-gray-300 mb-6">Contact us today for a personalized consultation and quote!</p>
+            <a href="index.html#contact" class="bg-primary text-white px-8 py-4 rounded-full text-lg shadow-lg hover:scale-105 transition">Get a Custom PC Quote</a>
+        </section>
+    </main>
+
+    <footer id="contact" class="w-full px-6 py-12 bg-[#0d1117] text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">Contact Us</h2>
+    
+      <div class="flex flex-col items-center space-y-2">
+        <p class="text-gray-300 flex items-center gap-2">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" alt="Gmail" class="w-5 h-5 filter invert">
+          <a href="mailto:voxencomputers@gmail.com" class="text-primary underline">voxencomputers@gmail.com</a>
+        </p>
+    
+        <p class="text-gray-300 flex items-center gap-2">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram" class="w-5 h-5 filter invert">
+          <a href="https://www.instagram.com/voxencomputers" target="_blank" class="text-primary underline">@voxencomputers</a>
+        </p>
+    
+       <p class="text-gray-300 flex items-center gap-2">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg" alt="WhatsApp" class="w-5 h-5 filter invert">
+          <a href="https://wa.me/918849993205?text=Hi%20Voxen%20Computers%2C%20I%27m%20interested%20in%20a%20custom%20PC%20build" target="_blank" class="text-primary underline">Chat on WhatsApp</a>
+        </p>
+      </div>
+    
+      <p class="text-sm text-gray-500 mt-6">&copy; 2025 Voxen Computers. Built for performance.</p>
+    </footer>
+</body>
+</html>
