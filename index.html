@@ -1,26 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <!-- Essential Meta -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Site Verifications -->
   <meta name="google-site-verification" content="R-J0WXnoiN2iVDmAXY2Ckcfrv8fH4fWxBzXTTTwJrLY" />
   <meta name="msvalidate.01" content="51C205B2D044934F6495DBCE3269B5E5" />
 
-  <!-- Title -->
   <title>Voxen Computers – Buy Custom & Prebuilt Gaming PCs & Laptops</title>
 
-  <!-- SEO Meta Tags -->
   <meta name="description" content="Custom & prebuilt gaming PCs and laptops. Expert-picked builds tailored to your needs. Performance guaranteed. Ships across India..">
   <meta name="keywords" content="custom PC, gaming PC India, Voxen Computers, budget gaming PC, PC builder India, assembled PC, best pc under, gaming pc, cheap gaming pc">
   <meta name="author" content="Voxen Computers">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0f172a">
   
- <!-- Canonical -->
-  <link rel="canonical" href="https://www.voxencomputers.shop/">
+ <link rel="canonical" href="https://www.voxencomputers.shop/">
   
-  <!-- Open Graph Tags -->
   <meta property="og:title" content="Voxen Computers – Prebuilt Gaming PCs & Laptops">
   <meta property="og:description" content="Buy ready-made gaming PCs and laptops built for performance. Trusted quality, handpicked parts, fast shipping.">
   <meta property="og:image" content="https://www.voxencomputers.shop/Logo.png">
@@ -28,8 +24,7 @@
   <meta property="og:type" content="website">
 
   
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VZWPK9YT3Z"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VZWPK9YT3Z"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -38,14 +33,12 @@
   gtag('config', 'G-VZWPK9YT3Z');
 </script>
   
- <!-- Favicons for all platforms -->
-  <link rel="icon" type="image/png" sizes="32x32" href="Favicon.png">
+ <link rel="icon" type="image/png" sizes="32x32" href="Favicon.png">
   <link rel="icon" type="image/png" sizes="192x192" href="Favicon.png">
   <link rel="apple-touch-icon" href="Favicon.png">
   <link rel="shortcut icon" href="Favicon.png">
 
-  <!-- JSON-LD -->
- <script type="application/ld+json">
+  <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -62,8 +55,7 @@
 </script>
 
   
-<!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -85,11 +77,31 @@
             growIn: {
               '0%': { transform: 'scale(0.8)', opacity: 0 },
               '100%': { transform: 'scale(1)', opacity: 1 }
+            },
+            slideInFromRight: {
+                '0%': { transform: 'translateX(100%)', opacity: 0 },
+                '100%': { transform: 'translateX(0)', opacity: 1 }
+            },
+            slideOutToLeft: {
+                '0%': { transform: 'translateX(0)', opacity: 1 },
+                '100%': { transform: 'translateX(-100%)', opacity: 0 }
+            },
+            slideInFromLeft: {
+                '0%': { transform: 'translateX(-100%)', opacity: 0 },
+                '100%': { transform: 'translateX(0)', opacity: 1 }
+            },
+            slideOutToRight: {
+                '0%': { transform: 'translateX(0)', opacity: 1 },
+                '100%': { transform: 'translateX(100%)', opacity: 0 }
             }
           },
           animation: {
             scroll: 'scroll 30s linear infinite',
-            growIn: 'growIn 0.3s ease-out forwards'
+            growIn: 'growIn 0.3s ease-out forwards',
+            slideInFromRight: 'slideInFromRight 0.7s ease-out forwards',
+            slideOutToLeft: 'slideOutToLeft 0.7s ease-out forwards',
+            slideInFromLeft: 'slideInFromLeft 0.7s ease-out forwards',
+            slideOutToRight: 'slideOutToRight 0.7s ease-out forwards'
           }
         }
       }
@@ -105,11 +117,198 @@
       transform: scale(1.05);
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     }
+    /* Slideshow specific styles */
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      aspect-ratio: 16 / 9; /* Enforce 16:9 aspect ratio */
+      max-height: 600px; /* Optional: limit max height */
+      margin-top: 64px; /* Space for fixed header */
+    }
+    .mySlides {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: left;
+      cursor: pointer; /* Indicate it's clickable */
+      opacity: 0; /* Start hidden for transitions */
+      z-index: 1;
+    }
+    .mySlides.active-slide {
+      opacity: 1;
+      z-index: 2; /* Bring active slide to front */
+    }
+    .slide-content {
+      position: absolute; /* Position content over image */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 0 5%; /* Padding from sides */
+      background: linear-gradient(to right, rgba(15, 23, 42, 0.9) 35%, rgba(15, 23, 42, 0.0) 70%); /* Gradient for text readability */
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Text shadow for readability */
+    }
+    .slide-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1; /* Place behind text content */
+    }
+
+    .slide-content h2 {
+      font-size: 3rem; /* Big font size for title */
+      font-weight: bold;
+      color: #3B82F6; /* Primary color */
+      margin-bottom: 1rem;
+      max-width: 45%; /* Limit title width for better layout */
+    }
+    .slide-content p {
+      font-size: 1.25rem;
+      color: #cbd5e1;
+      max-width: 45%; /* Limit description width */
+      margin-bottom: 2rem;
+    }
+    /* Specific styling for the first slide with the logo */
+    .slide-content.main-info {
+        background: none; /* No gradient for the logo slide */
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .slide-content.main-info .hero-logo {
+        max-width: 400px;
+        width: 100%;
+        height: auto;
+        transform: translateX(-1rem);
+        margin-bottom: 1rem;
+    }
+    .slide-content.main-info .hero-text {
+        font-size: 1.5rem;
+        max-width: 700px;
+        margin-bottom: 2rem;
+        color: #cbd5e1;
+    }
+    .slide-content.main-info .hero-button {
+        background-color: #3B82F6;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 9999px;
+        font-size: 1.125rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+    }
+    .slide-content.main-info .hero-button:hover {
+        transform: scale(1.05);
+    }
+    /* Dots for navigation */
+    .dots-container {
+      text-align: center;
+      padding: 20px;
+      position: absolute;
+      bottom: 0px;
+      width: 100%;
+      z-index: 10; /* Ensure dots are above slides */
+    }
+    .dot {
+      cursor: pointer;
+      height: 15px;
+      width: 15px;
+      margin: 0 2px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      /* Removed transition for hover, keeping only current indicator */
+    }
+    .dot.active {
+      background-color: #717171;
+    }
+
+    /* Prev/Next buttons */
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+      background-color: rgba(0,0,0,0.5); /* Semi-transparent background */
+      z-index: 3; /* Above slides, below dots */
+    }
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+    .prev:hover, .next:hover {
+      background-color: rgba(0,0,0,0.8);
+    }
+
+    /* Header styling and animation application */
+    header {
+      background-color: #0f172a; /* Solid opaque background */
+      position: fixed; /* Keep it fixed at the top */
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 50; /* Ensure it stays above other content */
+      transition: transform 0.5s ease-out; /* Smooth transition for the transform property */
+      transform: translateY(0); /* Ensure header starts visible */
+    }
+    header.hidden-header { /* Class for hiding header */
+      transform: translateY(-100%); /* Slide header up and out of view */
+    }
+
+    /* Media queries for smaller screens */
+    @media (max-width: 768px) {
+      .slide-content h2 {
+        font-size: 2rem;
+        max-width: 90%; /* Allow text to take more width */
+      }
+      .slide-content p {
+        font-size: 1rem;
+        max-width: 90%;
+      }
+      .slide-content {
+          background: linear-gradient(to bottom, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.0) 70%); /* Adjust gradient for mobile */
+          padding-top: 20%; /* Push content down slightly */
+          align-items: center;
+          text-align: center;
+      }
+      .slide-content.main-info .hero-text {
+          font-size: 1rem;
+      }
+      .slide-content.main-info .hero-button {
+          font-size: 1rem;
+          padding: 0.5rem 1rem;
+      }
+      .prev, .next {
+        padding: 10px;
+        font-size: 14px;
+        margin-top: -15px;
+      }
+    }
   </style>
 </head>
 <body class="bg-background text-light font-sans">
-  <!-- Navigation -->
-  <header class="bg-background text-white fixed top-0 left-0 right-0 z-50 shadow-md">
+  <header id="mainHeader" class="bg-background text-white fixed top-0 left-0 right-0 z-50 shadow-md">
     <div class="flex justify-between items-center px-6 py-4">
       <h1 class="text-xl font-bold">Voxen</h1>
       <button id="menuToggle" class="md:hidden text-white focus:outline-none">
@@ -118,14 +317,20 @@
         </svg>
       </button>
       <nav id="menu" class="hidden md:flex space-x-6">
-        <a href="#builds" class="hover:text-primary">Builds</a>
+        <a href="index.html" class="hover:text-primary">Home</a>
+        <a href="custom_pcs.html" class="hover:text-primary">Custom PCs</a>
+        <a href="prebuilt_pcs.html" class="hover:text-primary">Prebuilt PCs</a>
+        <a href="laptops.html" class="hover:text-primary">Laptops</a>
         <a href="#pricing" class="hover:text-primary">Pricing</a>
         <a href="#faq" class="hover:text-primary">FAQ</a>
         <a href="#contact" class="hover:text-primary">Contact</a>
       </nav>
     </div>
     <div id="mobileMenu" class="md:hidden hidden px-6 pb-4">
-      <a href="#builds" class="block py-2 hover:text-primary">Builds</a>
+      <a href="index.html" class="block py-2 hover:text-primary">Home</a>
+      <a href="custom_pcs.html" class="block py-2 hover:text-primary">Custom PCs</a>
+      <a href="prebuilt_pcs.html" class="block py-2 hover:text-primary">Prebuilt PCs</a>
+      <a href="laptops.html" class="block py-2 hover:text-primary">Laptops</a>
       <a href="#pricing" class="block py-2 hover:text-primary">Pricing</a>
       <a href="#faq" class="block py-2 hover:text-primary">FAQ</a>
       <a href="#contact" class="block py-2 hover:text-primary">Contact</a>
@@ -136,20 +341,167 @@
       const mobileMenu = document.getElementById('mobileMenu');
       mobileMenu.classList.toggle('hidden');
     });
-  </script>
-  <body class="bg-background text-light font-sans">
 
-  <!-- Hero -->
-  <section class="flex flex-col justify-center items-center text-center px-6 pt-6 space-y-6">
-    <img src="Logo.png" alt="Voxen Computers" 
-     class="mx-auto mt-4 -translate-x-4" 
-     style="max-width: 400px; width: 100%; height: auto; transform: translateX(-1rem);">
-    <p class="text-xl text-gray-300">Expert PC Build Guidance & Fully Assembled Systems</p>
-    <a href="#builds" class="bg-primary text-white px-6 py-3 rounded-full text-lg shadow-lg hover:scale-105 transition">See Sample Builds</a>
+    // Header scroll animation logic
+    let lastScrollTop = 0;
+    const mainHeader = document.getElementById('mainHeader');
+    window.addEventListener('scroll', function() {
+        let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        if (currentScroll > lastScrollTop && currentScroll > mainHeader.offsetHeight) {
+            // Scrolling down: hide header
+            mainHeader.classList.add('hidden-header');
+        } else if (currentScroll < lastScrollTop || currentScroll === 0) {
+            // Scrolling up or at the very top: show header
+            mainHeader.classList.remove('hidden-header');
+        }
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+  </script>
+
+  <section class="slideshow-container">
+    <div class="mySlides" data-url="#builds">
+        <div class="slide-content main-info">
+            <img src="Logo.png" alt="Voxen Computers" class="hero-logo">
+            <p class="hero-text">Your Destination for High-Performance Custom & Prebuilt Gaming PCs and Laptops</p>
+            <a href="#builds" class="hero-button">Explore Our Builds</a>
+        </div>
+    </div>
+
+    <div class="mySlides" data-url="custom_pcs.html">
+        <img src="custom_pc.png" class="slide-image" alt="Custom PC Build">
+        <div class="slide-content">
+            <h2>CRAFT YOUR PERFECT MACHINE</h2>
+            <p>Unleash your vision with a custom-built PC tailored to your exact specifications. From high-end gaming rigs to powerful workstations, we provide expert guidance and premium components.</p>
+        </div>
+    </div>
+
+    <div class="mySlides" data-url="prebuilt_pcs.html">
+        <img src="prebuilt_pc.png" class="slide-image" alt="Prebuilt Gaming PC">
+        <div class="slide-content">
+            <h2>POWER. READY TO GO.</h2>
+            <p>Experience high-performance gaming and seamless multitasking with our curated selection of prebuilt PCs. Expertly assembled and rigorously tested for peak performance.</p>
+        </div>
+    </div>
+
+    <div class="mySlides" data-url="laptops.html">
+        <img src="laptops.png" class="slide-image" alt="Variety of Laptops">
+        <div class="slide-content">
+            <h2>MOBILITY. VERSATILITY. POWER.</h2>
+            <p>Find the perfect laptop for your needs. From high-octane gaming machines to sleek and productive office companions, our expert guidance simplifies your choice.</p>
+        </div>
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    <div class="dots-container">
+        <span class="dot active" data-slide-index="0"></span>
+        <span class="dot" data-slide-index="1"></span>
+        <span class="dot" data-slide-index="2"></span>
+        <span class="dot" data-slide-index="3"></span>
+    </div>
   </section>
 
-  <!-- About Me -->
- <section class="px-6 py-20 bg-background text-center">
+  <script>
+    let slideIndex = 0; // Current slide index (0-based)
+    let slideshowTimer; // To store the timer ID
+    const autoSlideInterval = 3000; // 3 seconds cooldown as requested
+
+    function showSlides(n, direction = 0) { // n is the index of the slide to show, direction: 0 for auto/initial, 1 for next, -1 for prev
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+
+      // Store the old slide index for animation purposes
+      const oldSlideIndex = slideIndex;
+
+      // Update slideIndex for the next display
+      if (n >= slides.length) {
+          slideIndex = 0; // Loop back to the first slide
+      } else if (n < 0) {
+          slideIndex = slides.length - 1; // Loop to the last slide
+      } else {
+          slideIndex = n;
+      }
+
+      // Hide all slides and remove active class from dots
+      for (i = 0; i < slides.length; i++) {
+        slides[i].classList.remove('active-slide', 'animate-slideInFromRight', 'animate-slideOutToLeft', 'animate-slideInFromLeft', 'animate-slideOutToRight', 'animate-fadeIn');
+        slides[i].style.display = "none"; // Ensure non-active slides are hidden
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].classList.remove("active");
+      }
+
+      // Apply slide-out animation to the *previously* active slide, if it exists and is different from new slide
+      if (slides[oldSlideIndex] && oldSlideIndex !== slideIndex) {
+          slides[oldSlideIndex].style.display = "block"; // Temporarily show to animate out
+          if (direction === 1) { // Moving next
+              slides[oldSlideIndex].classList.add('animate-slideOutToLeft');
+          } else if (direction === -1) { // Moving prev
+              slides[oldSlideIndex].classList.add('animate-slideOutToRight');
+          }
+          // After animation, hide it
+          setTimeout(() => { slides[oldSlideIndex].style.display = "none"; }, 700); // Match animation duration
+      }
+
+
+      // Show the current slide and add active class to its dot after a short delay
+      // This delay ensures the previous slide's "slideOut" animation has a head start
+      setTimeout(() => {
+          slides[slideIndex].style.display = "block";
+          if (direction === 1) { // Moving next
+              slides[slideIndex].classList.add('animate-slideInFromRight');
+          } else if (direction === -1) { // Moving prev
+              slides[slideIndex].classList.add('animate-slideInFromLeft');
+          } else { // Auto or initial load
+              slides[slideIndex].classList.add('animate-fadeIn'); // Default fade in for auto transitions
+          }
+          slides[slideIndex].classList.add('active-slide');
+          dots[slideIndex].classList.add("active");
+      }, 50); // Small delay to let old slide animate out first
+
+      // Clear existing timer and set a new one for auto-play
+      clearTimeout(slideshowTimer); 
+      slideshowTimer = setTimeout(() => showSlides(slideIndex + 1, 1), autoSlideInterval); 
+    }
+
+    // Function to change slide manually with arrows
+    function plusSlides(n) {
+        // Stop auto-play temporarily when manual navigation occurs
+        clearTimeout(slideshowTimer); 
+        showSlides(slideIndex + n, n); // Pass n as direction for animation
+    }
+
+    // Initialize slideshow when the page loads
+    window.onload = function() {
+        showSlides(0); // Start with the first slide (index 0)
+
+        // Add click event listeners to slides (entire slide is clickable)
+        const slides = document.querySelectorAll('.mySlides');
+        slides.forEach(slide => {
+            slide.addEventListener('click', function() {
+                const url = this.getAttribute('data-url');
+                if (url) {
+                    window.location.href = url;
+                }
+            });
+        });
+
+        // Add click event listeners to dots (for indicating current slide only)
+        const dots = document.querySelectorAll('.dot');
+        dots.forEach(dot => {
+            dot.addEventListener('click', function() {
+                const index = parseInt(this.getAttribute('data-slide-index'));
+                if (!isNaN(index)) {
+                    showSlides(index, 0); // Jump to specific slide, no directional animation needed
+                }
+            });
+        });
+    };
+  </script>
+
+  <section class="px-6 py-20 bg-background text-center">
   <h2 class="text-3xl font-bold text-white mb-4">About Us</h2>
   <p class="text-gray-300 max-w-3xl mx-auto text-lg">
     At Voxen, we don’t just assemble parts — we engineer high-performance machines tailored to your needs. Whether it’s gaming, editing, or 3D workloads, our custom-built PCs are tested, optimized, and built to last.<br><br>
@@ -158,7 +510,6 @@
   </p>
 </section>
 
-  <!-- What You Get -->
   <section class="px-6 py-20 bg-gray-950 text-center">
     <h2 class="text-3xl font-bold text-white mb-4">What You Get When You Pay</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -189,8 +540,7 @@
     </div>
   </section>
   
- <!-- Pricing -->
-<section id="pricing" class="relative px-6 py-20 bg-background text-center">
+ <section id="pricing" class="relative px-6 py-20 bg-background text-center">
   <div class="absolute top-4 right-4 text-sm text-gray-400">PC delivery across PAN India</div>
   <h2 class="text-3xl font-bold text-white mb-4">Pricing</h2>
   <p class="text-gray-300 mb-2">Shipping support available for all builds. Shipping charges apply separately based on your location.</p>
@@ -211,19 +561,18 @@
   </div>
 </section>
 
-  <!-- Sample Builds -->
-<section id="builds" class="px-6 py-20 bg-background text-center relative z-10">
+  <section id="builds" class="px-6 py-20 bg-background text-center relative z-10">
   <h2 class="text-3xl font-bold text-white mb-8">Sample Builds</h2>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
 
-    <div class="glass p-6 rounded-xl transition transform hover:scale-105 hover:shadow-2xl cursor-pointer" onclick="openBuild(0)">
+    <div class="glass p-6 rounded-xl transition transform hover:scale-105 hover:shadow-2xl cursor-pointer" onclick="window.location.href='prebuilt_pcs.html#budget-beast'">
       <h3 class="text-xl font-bold text-primary mb-2">💸 Budget Beast – ₹30K</h3>
       <p class="text-sm text-gray-400">R5 5500 | RX 580 | 16GB RAM | 512GB SSD</p>
       <img src="pc1.png" alt="Budget Beast" class="mx-auto h-48 object-contain mt-4 hover:scale-105 transition duration-300 ease-in-out">
       <button class="mt-4 bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-blue-600 transition transform hover:scale-105">View More</button>
     </div>
 
-    <div class="glass p-6 rounded-xl transition transform hover:scale-105 hover:shadow-2xl cursor-pointer" onclick="openBuild(1)">
+    <div class="glass p-6 rounded-xl transition transform hover:scale-105 hover:shadow-2xl cursor-pointer" onclick="window.location.href='prebuilt_pcs.html#midrange-pro'">
       <h3 class="text-xl font-bold text-primary mb-2">⚖️ Midrange Pro – ₹60K</h3>
       <p class="text-sm text-gray-400">i5 13400F | RTX 4060 | 16GB RAM | 1TB SSD</p>
       <img src="pc2.png" alt="Midrange Pro" class="mx-auto h-48 object-contain mt-4 hover:scale-105 transition duration-300 ease-in-out">
@@ -241,12 +590,10 @@
 </section>
 
 
-<!-- Modal Build Viewer -->
 <div id="buildModal" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md flex justify-center items-center z-50 hidden">
   <div class="bg-gray-900 bg-opacity-90 text-white rounded-2xl max-w-6xl w-full mx-4 p-8 grid grid-cols-1 md:grid-cols-2 gap-6 animate-scaleIn relative max-h-[90vh] sm:max-h-[85vh] overflow-y-auto">
     <button onclick="closeBuild()" class="absolute top-4 right-6 text-xl text-gray-300 hover:text-white">✕</button>
 
-    <!-- Text Side -->
     <div>
       <h3 id="buildTitle" class="text-2xl font-bold text-primary mb-4">Build Title</h3>
       <h4 class="text-lg font-semibold mb-2">Specs</h4>
@@ -257,7 +604,6 @@
       <ul id="buildBenchmarks" class="list-disc ml-5 space-y-1 text-gray-300 text-sm"></ul>
     </div>
 
-    <!-- Image Side -->
     <div class="flex items-center justify-center">
       <img id="buildImage" src="" alt="PC Image" class="rounded-xl w-full max-w-sm">
     </div>
@@ -265,6 +611,8 @@
 </div>
 
 <script>
+  // This script for the modal will still work if you keep the `openBuild` calls
+  // However, I've updated the onclick events on the "Sample Builds" section to directly link to new pages.
   const builds = [
     {
       title: "💸 Budget Beast – ₹30K",
@@ -299,7 +647,6 @@
         "Motherboard: Gigabyte B760M-E",
         "PSU: 550W",
         "Cooler: Antec A400i",
-        "Case: Ant Esports ICE 100"
       ],
       performance: [
         "Valorant: 300+ FPS",
@@ -374,10 +721,8 @@
   }
 </script>
 
-<!-- Overlay Div (put this just before closing </body> tag) -->
 <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
 
-<!-- JS Script (put this just before closing </body> tag, after overlay) -->
 <script>
   const tiles = document.querySelectorAll('[data-index]');
   const overlay = document.getElementById('overlay');
@@ -424,12 +769,10 @@
 </script>
 
 
-  <!-- Customer Reviews -->
   <section class="px-6 py-20 bg-background overflow-hidden">
   <h2 class="text-3xl font-bold text-white text-center mb-8">What Customers Say</h2>
   <div class="w-full overflow-hidden">
     <div class="flex gap-6 w-max animate-scroll">
-      <!-- Loop 1 -->
       <div class="flex gap-6">
         <div class="min-w-[300px] bg-gray-800 rounded-xl p-4 text-white">
           <p>“Got a beast ₹50K rig. Valorant runs like butter. Respect!”</p>
@@ -457,7 +800,6 @@
         </div>
       </div>
 
-      <!-- Loop 2 (identical) -->
       <div class="flex gap-6">
         <div class="min-w-[300px] bg-gray-800 rounded-xl p-4 text-white">
           <p>“Got a beast ₹50K rig. Valorant runs like butter. Respect!”</p>
@@ -488,7 +830,6 @@
   </div>
 </section>
 
-  <!-- FAQ Section (Collapsible) -->
   <section id="faq" class="px-6 py-20 bg-gray-950 text-white">
     <h2 class="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
     <div class="max-w-3xl mx-auto space-y-4">
@@ -505,35 +846,31 @@
         <p class="text-gray-300 mt-2">Yes, for full builds. After helping you with parts and approval, I’ll assemble, test, and arrange shipping. Charges vary with system price and shipping distance.</p>
       </details>
       <details class="bg-gray-800 p-4 rounded-xl cursor-pointer">
-        <summary class="font-semibold text-lg text-primary">💻 Can you help me choose a laptop instead?</summary>
+        <summary class="font-3xl font-semibold text-lg text-primary">💻 Can you help me choose a laptop instead?</summary>
         <p class="text-gray-300 mt-2">Absolutely. Whether it’s for gaming, editing, or college, I’ll find you the best deal and machine under your budget.</p>
       </details>
       <details class="bg-gray-800 p-4 rounded-xl cursor-pointer">
-        <summary class="font-semibold text-lg text-primary">⌛ How long does it take after payment?</summary>
+        <summary class="font-3xl font-semibold text-lg text-primary">⌛ How long does it take after payment?</summary>
         <p class="text-gray-300 mt-2">For part picking/laptop guide: under 24 hours. For full builds: 3–5 working days including stress testing and dispatch.</p>
       </details>
     </div>
   </section>
 
-  <!-- Contact Section -->
-<footer class="w-full px-6 py-12 bg-[#0d1117] text-center">
+  <footer id="contact" class="w-full px-6 py-12 bg-[#0d1117] text-center">
   <h2 class="text-3xl font-bold text-white mb-4">Contact Us</h2>
 
   <div class="flex flex-col items-center space-y-2">
-    <!-- Gmail -->
     <p class="text-gray-300 flex items-center gap-2">
       <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" alt="Gmail" class="w-5 h-5 filter invert">
       <a href="mailto:voxencomputers@gmail.com" class="text-primary underline">voxencomputers@gmail.com</a>
     </p>
 
-    <!-- Instagram -->
     <p class="text-gray-300 flex items-center gap-2">
       <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram" class="w-5 h-5 filter invert">
       <a href="https://www.instagram.com/voxencomputers" target="_blank" class="text-primary underline">@voxencomputers</a>
     </p>
 
-   <!-- WhatsApp -->
-    <p class="text-gray-300 flex items-center gap-2">
+   <p class="text-gray-300 flex items-center gap-2">
       <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg" alt="WhatsApp" class="w-5 h-5 filter invert">
       <a href="https://wa.me/918849993205?text=Hi%20Voxen%20Computers%2C%20I%27m%20interested%20in%20a%20custom%20PC%20build" target="_blank" class="text-primary underline">Chat on WhatsApp</a>
     </p>
@@ -542,9 +879,5 @@
   <p class="text-sm text-gray-500 mt-6">&copy; 2025 Voxen Computers. Built for performance.</p>
 </footer>
 
-</body>
-</html>
-<!-- partial -->
-  
 </body>
 </html>
