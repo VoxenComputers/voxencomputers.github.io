@@ -253,8 +253,8 @@
               <p class="text-lg text-slate-300 max-w-md">Find the perfect laptop for your needs, from gaming machines to office companions.</p>
           </div>
       </div>
-      <a onclick="plusSlides(-1)" class="prev absolute top-1/2 -translate-y-1/2 left-0 p-4 text-white font-bold text-lg cursor-pointer z-10 select-none rounded-r-md">&#10094;</a>
-      <a onclick="plusSlides(1)" class="next absolute top-1/2 -translate-y-1/2 right-0 p-4 text-white font-bold text-lg cursor-pointer z-10 select-none rounded-l-md">&#10095;</a>
+      <a class="prev absolute top-1/2 -translate-y-1/2 left-0 p-4 text-white font-bold text-lg cursor-pointer z-10 select-none rounded-r-md">&#10094;</a>
+      <a class="next absolute top-1/2 -translate-y-1/2 right-0 p-4 text-white font-bold text-lg cursor-pointer z-10 select-none rounded-l-md">&#10095;</a>
       
       <div class="dots-container text-center">
           <span class="dot inline-block w-4 h-4 bg-gray-400 rounded-full cursor-pointer mx-1"></span>
@@ -266,60 +266,57 @@
   </section>
 
   <script>
-    let slideIndex = 0;
-    let slideshowTimer;
-    const slides = document.querySelectorAll(".mySlides");
-    const dots = document.querySelectorAll(".dot");
+    document.addEventListener('DOMContentLoaded', function() {
+        let slideIndex = 0;
+        let slideshowTimer;
+        const slides = document.querySelectorAll(".mySlides");
+        const dots = document.querySelectorAll(".dot");
+        const slideshow = document.getElementById("slideshow");
 
-    function showSlide(newIndex, direction = 0) {
-        const oldIndex = slideIndex;
-        if(oldIndex === newIndex && direction !== 0) return;
-
-        slideIndex = (newIndex + slides.length) % slides.length;
-        const currentSlide = slides[slideIndex];
-        const oldSlide = slides[oldIndex];
-        
-        dots.forEach(dot => dot.classList.remove("active"));
-        dots[slideIndex].classList.add("active");
-        
-        if (direction) {
-            const outClass = direction === 1 ? 'animate-slideOutToLeft' : 'animate-slideOutToRight';
-            const inClass = direction === 1 ? 'animate-slideInFromRight' : 'animate-slideInFromLeft';
-            oldSlide.classList.add(outClass);
-            currentSlide.classList.add(inClass, 'active-slide');
-            setTimeout(() => {
-                oldSlide.classList.remove('active-slide', outClass);
-                currentSlide.classList.remove(inClass);
-            }, 500);
-        } else {
-            oldSlide.classList.remove('active-slide');
-            currentSlide.classList.add('active-slide');
+        function showSlide(newIndex, direction = 0) {
+            const oldIndex = slideIndex;
+            if(oldIndex === newIndex && direction !== 0) return;
+            slideIndex = (newIndex + slides.length) % slides.length;
+            const currentSlide = slides[slideIndex];
+            const oldSlide = slides[oldIndex];
+            dots.forEach(dot => dot.classList.remove("active"));
+            dots[slideIndex].classList.add("active");
+            if (direction) {
+                const outClass = direction === 1 ? 'animate-slideOutToLeft' : 'animate-slideOutToRight';
+                const inClass = direction === 1 ? 'animate-slideInFromRight' : 'animate-slideInFromLeft';
+                oldSlide.classList.add(outClass);
+                currentSlide.classList.add(inClass, 'active-slide');
+                setTimeout(() => {
+                    oldSlide.classList.remove('active-slide', outClass);
+                    currentSlide.classList.remove(inClass);
+                }, 500);
+            } else {
+                oldSlide.classList.remove('active-slide');
+                currentSlide.classList.add('active-slide');
+            }
+            clearInterval(slideshowTimer);
+            slideshowTimer = setInterval(() => showSlide(slideIndex + 1, 1), 4000); // SPEED RESTORED TO 3 SECONDS
         }
-        clearInterval(slideshowTimer);
-        slideshowTimer = setInterval(() => showSlide(slideIndex + 1, 1), 7000);
-    }
 
-    function plusSlides(n) {
-        const direction = n > 0 ? 1 : -1;
-        showSlide(slideIndex + n, direction);
-    }
-
-    dots.forEach((dot, i) => {
-        dot.addEventListener("click", () => {
-            const direction = i > slideIndex ? 1 : -1;
-            showSlide(i, direction);
+        document.querySelector(".prev").addEventListener("click", () => showSlide(slideIndex - 1, -1));
+        document.querySelector(".next").addEventListener("click", () => showSlide(slideIndex + 1, 1));
+        
+        dots.forEach((dot, i) => {
+            dot.addEventListener("click", () => {
+                const direction = i > slideIndex ? 1 : -1;
+                showSlide(i, direction);
+            });
         });
-    });
 
-    // Tap to navigate
-    slides.forEach(slide => {
-        slide.addEventListener('click', function() {
-            const url = this.getAttribute('data-url');
-            if (url) window.location.href = url;
+        slides.forEach(slide => {
+            slide.addEventListener('click', function() {
+                const url = this.getAttribute('data-url');
+                if (url) window.location.href = url;
+            });
         });
-    });
 
-    showSlide(0);
+        showSlide(0);
+    });
   </script>
 
   <section class="px-6 py-20 bg-slate-800 text-center">
@@ -383,21 +380,21 @@
     <h2 class="text-3xl font-bold text-white mb-8">Sample Builds</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
   
-      <div class="glass p-6 rounded-xl transition transform hover:scale-105 hover:shadow-2xl cursor-pointer" onclick="window.location.href='prebuilt_pcs.html'">
+      <div class="glass p-6 rounded-xl transition transform hover:scale-105 hover:shadow-2xl cursor-pointer" onclick="openBuildModal(0)">
         <h3 class="text-xl font-bold text-blue-500 mb-2">💸 Budget Beast – ₹30K</h3>
         <p class="text-sm text-gray-400">R5 5500 | RX 580 | 16GB RAM | 512GB SSD</p>
         <img src="pc1.png" alt="Budget Beast" class="mx-auto h-48 object-contain mt-4 hover:scale-105 transition duration-300 ease-in-out">
         <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700 transition transform hover:scale-105">View More</button>
       </div>
   
-      <div class="glass p-6 rounded-xl transition transform hover:scale-105 hover:shadow-2xl cursor-pointer" onclick="window.location.href='prebuilt_pcs.html'">
+      <div class="glass p-6 rounded-xl transition transform hover:scale-105 hover:shadow-2xl cursor-pointer" onclick="openBuildModal(1)">
         <h3 class="text-xl font-bold text-blue-500 mb-2">⚖️ Midrange Pro – ₹60K</h3>
         <p class="text-sm text-gray-400">i5 13400F | RTX 4060 | 16GB RAM | 1TB SSD</p>
         <img src="pc2.png" alt="Midrange Pro" class="mx-auto h-48 object-contain mt-4 hover:scale-105 transition duration-300 ease-in-out">
         <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700 transition transform hover:scale-105">View More</button>
       </div>
   
-      <div class="glass p-6 rounded-xl transition transform hover:scale-105 hover:shadow-2xl cursor-pointer" onclick="window.location.href='prebuilt_pcs.html'">
+      <div class="glass p-6 rounded-xl transition transform hover:scale-105 hover:shadow-2xl cursor-pointer" onclick="openBuildModal(2)">
         <h3 class="text-xl font-bold text-blue-500 mb-2">👑 Monster Multitasker – ₹1.5L</h3>
         <p class="text-sm text-gray-400">i7 14700K | RTX 4070 | 32GB DDR5 | 2TB SSD</p>
         <img src="pc3.png" alt="Monster Multitasker" class="mx-auto h-48 object-contain mt-4 hover:scale-105 transition duration-300 ease-in-out">
@@ -475,6 +472,24 @@
     <p class="text-sm text-gray-500 mt-6">&copy; 2025 Voxen Computers. Built for performance.</p>
   </footer>
 
+  <div id="buildModal" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md flex justify-center items-center z-50 hidden">
+    <div class="bg-slate-800 rounded-2xl max-w-4xl w-full mx-4 p-8 grid grid-cols-1 md:grid-cols-2 gap-6 relative max-h-[90vh] overflow-y-auto">
+        <button onclick="closeBuildModal()" class="absolute top-4 right-6 text-2xl text-gray-300 hover:text-white">&times;</button>
+        <div>
+            <h3 id="buildTitle" class="text-2xl font-bold text-primary mb-4"></h3>
+            <h4 class="text-lg font-semibold mb-2">Specs</h4>
+            <ul id="buildSpecs" class="list-disc ml-5 space-y-1 mb-4 text-gray-300 text-sm"></ul>
+            <h4 class="text-lg font-semibold mb-2">Gaming Performance</h4>
+            <ul id="buildPerformance" class="list-disc ml-5 space-y-1 mb-4 text-gray-300 text-sm"></ul>
+            <h4 class="text-lg font-semibold mb-2">Benchmarks</h4>
+            <ul id="buildBenchmarks" class="list-disc ml-5 space-y-1 text-gray-300 text-sm"></ul>
+        </div>
+        <div class="flex items-center justify-center">
+            <img id="buildImage" src="" alt="PC Image" class="rounded-xl w-full max-w-sm">
+        </div>
+    </div>
+  </div>
+
   <div id="contactModal" class="fixed inset-0 bg-black bg-opacity-75 backdrop-blur-md flex justify-center items-center z-50 hidden">
     <div class="bg-slate-800 rounded-2xl max-w-sm w-full mx-4 p-8 text-center relative">
         <button onclick="closeContactModal()" class="absolute top-4 right-6 text-2xl text-gray-300 hover:text-white">&times;</button>
@@ -498,17 +513,36 @@
 
   <script>
     const contactModal = document.getElementById('contactModal');
-    function openContactModal() {
-        contactModal.classList.remove('hidden');
-    }
-    function closeContactModal() {
-        contactModal.classList.add('hidden');
-    }
+    function openContactModal() { contactModal.classList.remove('hidden'); }
+    function closeContactModal() { contactModal.classList.add('hidden'); }
     contactModal.addEventListener('click', function(event) {
         if (event.target === this) {
             closeContactModal();
         }
     });
+
+    const buildModal = document.getElementById('buildModal');
+    const buildsData = [
+        { title: "💸 Budget Beast – ₹30K", specs: ["CPU: Ryzen 5 5500", "GPU: RX 580 8GB", "RAM: 16GB DDR4", "Storage: 512GB NVMe SSD"], performance: ["Valorant: 250+ FPS", "GTA V: 60+ FPS (High 1080p)"], benchmarks: ["Cinebench R23 (Multi): ~7500"], image: "pc1.png" },
+        { title: "⚖️ Midrange Pro – ₹60K", specs: ["CPU: Intel i5 13400F", "GPU: RTX 4060 8GB", "RAM: 16GB DDR4", "Storage: 1TB NVMe SSD"], performance: ["Valorant: 300+ FPS", "GTA V: 90+ FPS (Very High 1080p)"], benchmarks: ["Cinebench R23 (Multi): ~12500"], image: "pc2.png" },
+        { title: "👑 Monster Multitasker – ₹1.5L", specs: ["CPU: Intel i7 14700K", "GPU: RTX 4070 12GB", "RAM: 32GB DDR5", "Storage: 2TB NVMe SSD"], performance: ["Valorant: 400+ FPS", "GTA V: 120 FPS (Ultra 1440p)"], benchmarks: ["Cinebench R23 (Multi): ~28500"], image: "pc3.png" }
+    ];
+    function openBuildModal(index) {
+        const build = buildsData[index];
+        document.getElementById("buildTitle").innerText = build.title;
+        document.getElementById("buildImage").src = build.image;
+        const specsList = document.getElementById("buildSpecs");
+        specsList.innerHTML = "";
+        build.specs.forEach(item => { const li = document.createElement("li"); li.innerText = item; specsList.appendChild(li); });
+        const perfList = document.getElementById("buildPerformance");
+        perfList.innerHTML = "";
+        build.performance.forEach(item => { const li = document.createElement("li"); li.innerText = item; perfList.appendChild(li); });
+        const benchList = document.getElementById("buildBenchmarks");
+        benchList.innerHTML = "";
+        build.benchmarks.forEach(item => { const li = document.createElement("li"); li.innerText = item; benchList.appendChild(li); });
+        buildModal.classList.remove('hidden');
+    }
+    function closeBuildModal() { buildModal.classList.add('hidden'); }
   </script>
 
 </body>
