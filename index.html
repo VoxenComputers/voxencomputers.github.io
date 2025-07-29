@@ -381,22 +381,22 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
   
       <div class="glass p-6 rounded-xl transition transform hover:scale-105 hover:shadow-2xl cursor-pointer" onclick="openBuildModal(0)">
-        <h3 class="text-xl font-bold text-blue-500 mb-2">💸 Budget Beast – ₹30K</h3>
+        <h3 class="text-xl font-bold text-blue-500 mb-2">Voxen Pulse B580 – ₹30K</h3>
         <p class="text-sm text-gray-400">R5 5500 | RX 580 | 16GB RAM | 512GB SSD</p>
         <img src="pc1.png" alt="Budget Beast" class="mx-auto h-48 object-contain mt-4 hover:scale-105 transition duration-300 ease-in-out">
         <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700 transition transform hover:scale-105">View More</button>
       </div>
   
       <div class="glass p-6 rounded-xl transition transform hover:scale-105 hover:shadow-2xl cursor-pointer" onclick="openBuildModal(1)">
-        <h3 class="text-xl font-bold text-blue-500 mb-2">⚖️ Midrange Pro – ₹60K</h3>
+        <h3 class="text-xl font-bold text-blue-500 mb-2">Voxen Nova B460 – ₹60K</h3>
         <p class="text-sm text-gray-400">i5 13400F | RTX 4060 | 16GB RAM | 1TB SSD</p>
         <img src="pc2.png" alt="Midrange Pro" class="mx-auto h-48 object-contain mt-4 hover:scale-105 transition duration-300 ease-in-out">
         <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700 transition transform hover:scale-105">View More</button>
       </div>
   
       <div class="glass p-6 rounded-xl transition transform hover:scale-105 hover:shadow-2xl cursor-pointer" onclick="openBuildModal(2)">
-        <h3 class="text-xl font-bold text-blue-500 mb-2">👑 Monster Multitasker – ₹1.5L</h3>
-        <p class="text-sm text-gray-400">i7 14700K | RTX 4070 | 32GB DDR5 | 2TB SSD</p>
+        <h3 class="text-xl font-bold text-blue-500 mb-2">Voxen Apex S580 – ₹1.5L</h3>
+        <p class="text-sm text-gray-400">Ryzen 7 9700x | RTX 5080 | 32GB DDR5 | 2TB SSD</p>
         <img src="pc3.png" alt="Monster Multitasker" class="mx-auto h-48 object-contain mt-4 hover:scale-105 transition duration-300 ease-in-out">
         <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700 transition transform hover:scale-105">View More</button>
       </div>
@@ -456,24 +456,24 @@
   <footer id="contact" class="w-full px-6 py-12 bg-[#0d1117] text-center">
     <h2 class="text-3xl font-bold text-white mb-4">Contact Us</h2>
     <div class="flex flex-col items-center space-y-2">
-      <p class="text-gray-300 flex items-center gap-2">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" alt="Gmail" class="w-5 h-5 filter invert">
+    <p class="text-gray-300 flex items-center gap-2">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" alt="Gmail" class="w-5 h-5">
         <a href="mailto:voxencomputers@gmail.com" class="text-blue-500 underline">voxencomputers@gmail.com</a>
-      </p>
-      <p class="text-gray-300 flex items-center gap-2">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram" class="w-5 h-5 filter invert">
+    </p>
+    <p class="text-gray-300 flex items-center gap-2">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram" class="w-5 h-5">
         <a href="https://www.instagram.com/voxencomputers" target="_blank" class="text-blue-500 underline">@voxencomputers</a>
-      </p>
-     <p class="text-gray-300 flex items-center gap-2">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg" alt="WhatsApp" class="w-5 h-5 filter invert">
+    </p>
+    <p class="text-gray-300 flex items-center gap-2">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg" alt="WhatsApp" class="w-5 h-5">
         <a href="https://wa.me/918849993205?text=Hi%20Voxen%20Computers%2C%20I%27m%20interested%20in%20a%20custom%20PC%20build" target="_blank" class="text-blue-500 underline">Chat on WhatsApp</a>
-      </p>
-    </div>
+    </p>
+</div>
     <p class="text-sm text-gray-500 mt-6">&copy; 2025 Voxen Computers. Built for performance.</p>
   </footer>
 
   <div id="buildModal" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md flex justify-center items-center z-50 hidden">
-    <div class="bg-slate-800 rounded-2xl max-w-4xl w-full mx-4 p-8 grid grid-cols-1 md:grid-cols-2 gap-6 relative max-h-[90vh] overflow-y-auto">
+   <div class="rounded-2xl max-w-4xl w-full mx-4 p-8 grid grid-cols-1 md:grid-cols-2 gap-6 relative max-h-[90vh] overflow-y-auto" style="background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(10px);">
         <button onclick="closeBuildModal()" class="absolute top-4 right-6 text-2xl text-gray-300 hover:text-white">&times;</button>
         <div>
             <h3 id="buildTitle" class="text-2xl font-bold text-primary mb-4"></h3>
@@ -484,8 +484,9 @@
             <h4 class="text-lg font-semibold mb-2">Benchmarks</h4>
             <ul id="buildBenchmarks" class="list-disc ml-5 space-y-1 text-gray-300 text-sm"></ul>
         </div>
-        <div class="flex items-center justify-center">
-            <img id="buildImage" src="" alt="PC Image" class="rounded-xl w-full max-w-sm">
+        <div class="flex flex-col items-center">
+  <img id="buildImage" src="" alt="PC Image" class="rounded-xl w-full max-w-sm">
+  <a href="prebuilt_pcs.html" class="mt-4 w-full max-w-sm text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition">Buy Now</a>
         </div>
     </div>
   </div>
@@ -496,15 +497,14 @@
         <h2 class="text-3xl font-bold text-white mb-6">Contact Us</h2>
         <div class="flex flex-col items-center space-y-4">
             <a href="mailto:voxencomputers@gmail.com" class="text-blue-500 underline flex items-center gap-2 text-lg">
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" alt="Gmail" class="w-6 h-6 filter invert">
-                voxencomputers@gmail.com
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" alt="Gmail" class="w-6 h-6">                voxencomputers@gmail.com
             </a>
             <a href="https://www.instagram.com/voxencomputers" target="_blank" class="text-blue-500 underline flex items-center gap-2 text-lg">
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram" class="w-6 h-6 filter invert">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram" class="w-6 h-6">
                 @voxencomputers
             </a>
             <a href="https://wa.me/918849993205?text=Hi%20Voxen%20Computers%2C%20I%27m%20interested%20in%20a%20custom%20PC%20build" target="_blank" class="text-blue-500 underline flex items-center gap-2 text-lg">
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg" alt="WhatsApp" class="w-6 h-6 filter invert">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg" alt="WhatsApp" class="w-6 h-6">
                 Chat on WhatsApp
             </a>
         </div>
@@ -522,10 +522,11 @@
     });
 
     const buildModal = document.getElementById('buildModal');
-    const buildsData = [
-        { title: "💸 Budget Beast – ₹30K", specs: ["CPU: Ryzen 5 5500", "GPU: RX 580 8GB", "RAM: 16GB DDR4", "Storage: 512GB NVMe SSD"], performance: ["Valorant: 250+ FPS", "GTA V: 60+ FPS (High 1080p)"], benchmarks: ["Cinebench R23 (Multi): ~7500"], image: "pc1.png" },
-        { title: "⚖️ Midrange Pro – ₹60K", specs: ["CPU: Intel i5 13400F", "GPU: RTX 4060 8GB", "RAM: 16GB DDR4", "Storage: 1TB NVMe SSD"], performance: ["Valorant: 300+ FPS", "GTA V: 90+ FPS (Very High 1080p)"], benchmarks: ["Cinebench R23 (Multi): ~12500"], image: "pc2.png" },
-        { title: "👑 Monster Multitasker – ₹1.5L", specs: ["CPU: Intel i7 14700K", "GPU: RTX 4070 12GB", "RAM: 32GB DDR5", "Storage: 2TB NVMe SSD"], performance: ["Valorant: 400+ FPS", "GTA V: 120 FPS (Ultra 1440p)"], benchmarks: ["Cinebench R23 (Multi): ~28500"], image: "pc3.png" }
+      // Updated buildsData array with the new build added at index 5 and Stratos replaced with Apex at index 4
+      const buildsData = [
+          { title: "💸 Voxen Pulse B580 – ₹30K", specs: ["CPU: Ryzen 5 5500", "GPU: RX 580 8GB", "RAM: 16GB DDR4", "Storage: 512GB NVMe SSD", "Motherboard: MSI B450M-A Pro II", "PSU: Ant Eco500W", "Cooler: Stock", "Case: Ant Esports Elite 1100"], performance: ["Valorant: 250+ FPS", "GTA V: 60+ FPS (High 1080p)"], benchmarks: ["Cinebench R23 (Multi): ~7500"], image: "pc1.png" },
+          { title: "⚖️ Voxen Nova B460 – ₹60K", specs: ["CPU: Intel i5 13400F", "GPU: RTX 4060 8GB", "RAM: 16GB DDR4", "Storage: 1TB NVMe SSD", "Motherboard: Gigabyte B760M-E", "PSU: 550W", "Cooler: Antec A400i", "Case: Ant Esports ICE 100"], performance: ["Valorant: 300+ FPS", "GTA V: 90+ FPS (Very High 1080p)"], benchmarks: ["Cinebench R23 (Multi): ~12500"], image: "pc2.png" },
+          { title: "🔥 Voxen Apex S5080 – ₹2,29,000", specs: ["CPU: Ryzen 7 9700X", "GPU: RTX 5080 16GB GDDR7", "Motherboard: ASRock X870 Pro", "RAM: 32GB DDR5 6000MHz (2×16GB)", "Storage: 2TB NVMe Gen4 SSD", "PSU: 850W 80+ Gold Modular PSU", "Cooler: CoolerMaster MasterLiquid 360 Atmos AIO", "Case: MSI MPG Velox 100R"], performance: ["Cyberpunk 2077 (RT Ultra, DLSS 4): 140+ FPS (4K)", "GTA V (Enhanced, Ray Tracing): 120+ FPS (4K)", "Red Dead Redemption 2 (Ultra, Vulkan): 130+ FPS (4K)", "Forza Horizon 5 (Extreme): 180+ FPS (4K)", "Valorant (High): 500+ FPS (4k)"], benchmarks: ["Cinebench R23 (Multi): ~22,240", "3DMark Time Spy: ~28,000"], image: "pc3.png" }, // Replaced Voxen Stratos A5470 at index 4
     ];
     function openBuildModal(index) {
         const build = buildsData[index];
