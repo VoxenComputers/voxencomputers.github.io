@@ -265,21 +265,21 @@
               <a href="#builds" class="bg-blue-600 text-white px-6 py-2 rounded-full text-lg shadow-lg hover:scale-105 transition">Explore Our Builds</a>
           </div>
       </div>
-      <div class="mySlides" data-url="custom_pcs.html">
+      <div class="mySlides" data-url="/custom_pcs">
           <img src="custom_pc.png" class="slide-image" alt="Custom PC Build">
           <div class="slide-content absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center text-center md:items-start md:text-left p-8 md:p-12">
               <h2 class="text-4xl md:text-5xl font-bold text-blue-500 mb-4 max-w-md">CRAFT YOUR PERFECT MACHINE</h2>
               <p class="text-lg text-slate-300 max-w-md">Unleash your vision with a custom-built PC tailored to your exact specifications.</p>
           </div>
       </div>
-      <div class="mySlides" data-url="prebuilt_pcs.html">
+      <div class="mySlides" data-url="/prebuilt_pcs">
           <img src="prebuilt_pc.png" class="slide-image" alt="Prebuilt Gaming PC">
           <div class="slide-content absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center text-center md:items-start md:text-left p-8 md:p-12">
               <h2 class="text-4xl md:text-5xl font-bold text-blue-500 mb-4 max-w-md">POWER. READY TO GO.</h2>
               <p class="text-lg text-slate-300 max-w-md">Experience high-performance gaming with our curated selection of prebuilt PCs.</p>
           </div>
       </div>
-      <div class="mySlides" data-url="laptops.html">
+      <div class="mySlides" data-url="/laptops">
           <img src="laptops.png" class="slide-image" alt="Variety of Laptops">
           <div class="slide-content absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center text-center md:items-start md:text-left p-8 md:p-12">
               <h2 class="text-4xl md:text-5xl font-bold text-blue-500 mb-4 max-w-md">MOBILITY. VERSATILITY. POWER.</h2>
@@ -434,7 +434,7 @@
         <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700 transition transform hover:scale-105">View Details</button>
       </div>
 <div class="col-span-full text-center mt-4">
-    <a href="prebuilt_pcs.html" class="inline-block mt-4 bg-blue-600 text-white px-6 py-3 rounded-full text-lg shadow-lg hover:bg-blue-700 transition transform hover:scale-105">View More Builds</a>
+    <a href="/prebuilt_pcs" class="inline-block mt-4 bg-blue-600 text-white px-6 py-3 rounded-full text-lg shadow-lg hover:bg-blue-700 transition transform hover:scale-105">View More Builds</a>
 </div>  
     </div>
   </section>
@@ -521,7 +521,7 @@
         </div>
         <div class="flex flex-col items-center">
   <img id="buildImage" src="" alt="PC Image" class="rounded-xl w-full max-w-sm">
-  <a href="prebuilt_pcs.html" class="mt-4 w-full max-w-sm text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition">Buy Now</a>
+  <a href="/prebuilt_pcs" class="mt-4 w-full max-w-sm text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition">Buy Now</a>
         </div>
     </div>
   </div>
@@ -581,13 +581,77 @@
     function closeBuildModal() { buildModal.classList.add('hidden'); }
   </script>
 <script>
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+// Ensures smooth scrolling for internal links (#pricing, #faq) and prevents teleport/jump
+document.addEventListener('DOMContentLoaded', function() {
+  // Select all anchor links that point to IDs on the same page
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      // Prevent the default instant jump AND hash change
+      e.preventDefault();
+
+      // Get the target element ID (e.g., 'pricing', 'faq')
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+
+      // Check if the target element exists
+      if (targetElement) {
+        // Get the height of the fixed header to adjust scroll position
+        const headerHeight = document.getElementById('mainHeader')?.offsetHeight || 0;
+
+        // Calculate the exact Y position to scroll to (accounting for header offset)
+        // Ensure the calculation doesn't result in a negative position (scrolling above the page)
+        // Use getBoundingClientRect().top + window.scrollY for accurate position relative to document top
+        const targetPosition = Math.max(0, targetElement.getBoundingClientRect().top + window.scrollY - headerHeight);
+
+        // Get the current scroll position
+        const startPosition = window.pageYOffset || document.documentElement.scrollTop;
+        // Calculate the total distance to scroll
+        const distance = targetPosition - startPosition;
+        // Set the duration of the scroll animation (in milliseconds)
+        const duration = 800; // 0.8 seconds
+        let startTime = null;
+
+        // Animation function using requestAnimationFrame for smoothness
+        function animation(currentTime) {
+          if (startTime === null) startTime = currentTime;
+          // Calculate elapsed time since the start of the animation
+          const timeElapsed = currentTime - startTime;
+          // Calculate progress (0 to 1) based on elapsed time and duration
+          const progress = Math.min(timeElapsed / duration, 1);
+
+          // Ease-in-out function for smoother start and stop
+          const easeInOutQuad = function (t) {
+            return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+          };
+
+          // Calculate the current scroll position during the animation
+          window.scrollTo(0, startPosition + distance * easeInOutQuad(progress));
+
+          // If animation isn't complete, continue requesting frames
+          if (progress < 1) {
+            window.requestAnimationFrame(animation);
+          } else {
+            // Animation finished.
+            // IMPORTANT: Update the URL hash AFTER scrolling is complete.
+            // This avoids the initial jump. history.pushState doesn't trigger scroll.
+            if (history.pushState) {
+                history.pushState(null, null, targetId);
+            } else {
+                // Fallback if pushState is somehow not supported
+                window.location.hash = targetId;
+            }
+            // Optional: Bring the target element into focus for accessibility
+            // targetElement.setAttribute('tabindex', '-1');
+            // targetElement.focus();
+          }
+        }
+
+        // Start the animation
+        window.requestAnimationFrame(animation);
+      }
+      // If targetElement doesn't exist, the click is simply ignored.
     });
+  });
 });
 </script>
 
