@@ -223,8 +223,8 @@
      <a href="/custom_pcs" class="hover:text-blue-500">Custom PCs</a>
      <a href="/prebuilt_pcs" class="hover:text-blue-500">Prebuilt PCs</a>
      <a href="/laptops" class="hover:text-blue-500">Laptops</a>
-     <a href="/#pricing" class="hover:text-blue-500">Pricing</a>
-     <a href="/#faq" class="hover:text-blue-500">FAQ</a>
+     <a href="#pricing" class="hover:text-blue-500">Pricing</a>
+     <a href="#faq" class="hover:text-blue-500">FAQ</a>
      <a href="javascript:void(0);" onclick="openContactModal()" class="hover:text-blue-500">Contact</a>
  </nav>
     </div>
@@ -233,8 +233,8 @@
       <a href="/custom_pcs" class="block py-2 hover:text-blue-500">Custom PCs</a>
       <a href="/prebuilt_pcs" class="block py-2 hover:text-blue-500">Prebuilt PCs</a>
       <a href="/laptops" class="block py-2 hover:text-blue-500">Laptops</a>
-      <a href="/#pricing" class="block py-2 hover:text-blue-500">Pricing</a>
-      <a href="/#faq" class="block py-2 hover:text-blue-500">FAQ</a>
+      <a href="#pricing" class="block py-2 hover:text-blue-500">Pricing</a>
+      <a href="#faq" class="block py-2 hover:text-blue-500">FAQ</a>
       <a href="javascript:void(0);" onclick="openContactModal()" class="block py-2 hover:text-blue-500">Contact</a>
     </div>
   </header>
@@ -580,6 +580,16 @@
     }
     function closeBuildModal() { buildModal.classList.add('hidden'); }
   </script>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+</script>
 
 </body>
 </html>
