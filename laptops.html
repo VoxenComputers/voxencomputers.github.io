@@ -7,7 +7,7 @@
     <link rel="canonical" href="https://www.voxencomputers.shop/laptops">
     <meta name="description" content="Get expert guidance for buying the best gaming laptops, work laptops, or college laptops within your budget from Voxen Computers.">
     <meta name="keywords" content="gaming laptop India, best laptop under, laptop buying guide, college laptop, work laptop, Voxen Computers laptop">
-    
+
     <link rel="icon" type="image/png" sizes="32x32" href="Favicon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="Favicon.png">
     <link rel="apple-touch-icon" href="Favicon.png">
@@ -39,6 +39,175 @@
       header.hidden-header {
         transform: translateY(-100%);
       }
+      /* --- Essential Product Card Layout Fixes --- */
+      .product-card {
+        background-color: #1e293b;
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex; /* Ensure it's a flex container */
+        flex-direction: column; /* Stack children vertically */
+        height: 100%; /* Allow cards to grow and fill the grid cell height */
+      }
+      .product-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      }
+      .product-card img {
+        height: 12rem;
+        object-fit: contain;
+        margin-bottom: 1rem;
+        /* Align image to the start */
+        align-self: flex-start;
+        margin-left: auto;
+        margin-right: auto;
+        /* Rounded image corners */
+        border-radius: 0.5rem;
+      }
+
+      /* Style for the main content area (title, specs, leased tag) */
+      .card-content {
+        flex-grow: 1; /* This makes the content area expand and push the bottom section down */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* Align content to the top within this area */
+        align-items: center; /* Center content horizontally */
+        text-align: center;
+        width: 100%; /* Ensure it takes full width */
+        margin-bottom: auto; /* Push content upwards if needed, but allow bottom section to anchor */
+      }
+
+      /* Style for the bottom section containing stars and button */
+      .bottom-section {
+        margin-top: auto; /* This pushes the bottom section to the bottom of the card */
+        text-align: center;
+        width: 100%; /* Ensure it takes full width */
+        flex-shrink: 0; /* Prevent it from shrinking if content is large */
+      }
+      /* --- End Essential Product Card Layout Fixes --- */
+
+
+      /* Modal Specific Styles */
+      .modal-container {
+          position: fixed;
+          inset: 0;
+          background-color: rgba(0, 0, 0, 0.5);
+          backdrop-filter: blur(8px);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 50;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+      .modal-container.visible {
+          opacity: 1;
+          visibility: visible;
+      }
+      .modal-content {
+          background-color: rgba(15, 23, 42, 0.9); /* Darker background from your theme */
+          color: #ffffff;
+          border-radius: 1rem;
+          max-width: 72rem; /* max-w-6xl */
+          width: 100%;
+          margin: 1rem; /* mx-4 */
+          padding: 2rem; /* p-8 */
+          display: grid;
+          grid-template-columns: 1fr; /* Default to single column */
+          gap: 1.5rem; /* gap-6 */
+          position: relative;
+          max-height: 90vh;
+          overflow-y: auto;
+          transform: scale(0.9); /* Start slightly smaller for growIn effect */
+          transition: transform 0.3s ease-out;
+      }
+      .modal-container.visible .modal-content {
+          transform: scale(1);
+      }
+      @media (min-width: 768px) { /* md breakpoint */
+          .modal-content {
+              grid-template-columns: 1fr 1fr; /* Two columns on medium screens and up */
+          }
+      }
+      .modal-close-button {
+          position: absolute;
+          top: 1rem;
+          right: 1.5rem;
+          font-size: 1.25rem;
+          color: #d1d5db; /* gray-300 */
+          cursor: pointer;
+      }
+      .modal-close-button:hover {
+          color: #ffffff;
+      }
+      .modal-content ul {
+          list-style-type: disc;
+          margin-left: 1.25rem; /* ml-5 */
+      }
+      .modal-content li {
+          margin-bottom: 0.25rem; /* space-y-1 equivalent */
+      }
+      .modal-content img {
+          border-radius: 0.75rem; /* rounded-xl */
+          width: 100%;
+          max-width: 24rem; /* max-w-sm */
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+      }
+
+      /* --- Corrected Star Rating Styles (Close Together) --- */
+      .star-rating {
+        display: flex;
+        justify-content: center; /* Centers stars horizontally */
+        align-items: center;
+        /* Remove any gap to make stars touch */
+        gap: 0rem;
+        /* Optional: Add a small margin to the container if needed for overall spacing */
+        margin: 0.5rem 0;
+      }
+
+      .star {
+        /* Yellow color for stars */
+        color: #fbbf24;
+        /* Standard size */
+        font-size: 1rem;
+        /* Remove margins to ensure they are close */
+        margin: 0rem;
+      }
+
+      .star.empty {
+        /* Gray for empty stars */
+        color: #4b5563;
+      }
+      /* --- End Corrected Star Rating Styles --- */
+
+      .leased-tag {
+        background-color: #4b5563;
+        color: #d1d5db;
+        font-size: 0.65rem;
+        padding: 0.15rem 0.35rem;
+        border-radius: 0.25rem;
+        display: block;              /* Make it behave like a block for centering */
+        width: fit-content;          /* Shrinks to text */
+        max-width: fit-content;
+        flex-shrink: 0;
+        line-height: 1;
+        margin: 0.25rem auto;        /* Centers horizontally */
+      }
+
+      /* Ensure the ratings text still has space from the stars */
+      .ratings-text {
+        font-size: 0.75rem;
+        color: #9ca3af;
+        /* This margin-left creates the space between stars and the rating count */
+        margin-left: 0.5rem;
+        white-space: nowrap;
+      }
+
     </style>
 </head>
 <body class="bg-slate-900 text-white font-sans">
@@ -46,7 +215,8 @@
         <div class="flex justify-between items-center px-6 py-4">
           <h1 class="text-xl font-bold">Voxen</h1>
           <button id="menuToggle" class="md:hidden text-white focus:outline-none">
-            <svg class="w-6 h-6 filter invert" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <!-- Corrected SVG filter for white color -->
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
           </button>
@@ -88,45 +258,508 @@
       </script>
 
     <main class="pt-24 pb-12 px-6">
-        <section class="text-center mb-12">
-            <h1 class="text-4xl font-bold primary mb-4">Expert Guidance for Your Next Laptop</h1>
-            <p class="text-xl text-gray-300 max-w-3xl mx-auto">Choosing the right laptop can be overwhelming. At Voxen Computers, we provide personalized advice to help you find the perfect laptop for your gaming, editing, professional, or academic needs, all within your budget.</p>
+        <!-- Ready to Buy Header -->
+        <section class="max-w-7xl mx-auto mb-8 px-4 text-center">
+          <h2 class="text-3xl font-bold text-blue-600 mb-4">Ready to Buy Your Perfect Laptop?</h2>
+          <p class="text-gray-300 text-lg">Choose from high-performance gaming, work, and office laptops—expertly curated for your needs.</p>
         </section>
 
-        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <div class="glass p-6 rounded-xl text-center">
-                <h2 class="text-2xl font-bold primary mb-2">Personalized Recommendations</h2>
-                <p class="text-gray-300">Based on your specific use-case and budget, we'll recommend the best laptop models and configurations for you.</p>
-            </div>
-            <div class="glass p-6 rounded-xl text-center">
-                <h2 class="text-2xl font-bold primary mb-2">Gaming Laptop Expertise</h2>
-                <p class="text-gray-300">From entry-level to high-end gaming machines, we know what makes a good gaming laptop and will guide you to the optimal choice.</p>
-            </div>
-            <div class="glass p-6 rounded-xl text-center">
-                <h2 class="text-2xl font-bold primary mb-2">Productivity & Creative Workstations</h2>
-                <p class="text-gray-300">Need a laptop for video editing, graphic design, or heavy-duty professional tasks? We'll help you find a powerful and reliable machine.</p>
-            </div>
-            <div class="glass p-6 rounded-xl text-center">
-                <h2 class="text-2xl font-bold primary mb-2">Student & Everyday Use Laptops</h2>
-                <p class="text-gray-300">Affordable yet capable laptops for students, daily Browse, and general productivity. Get the best value for your money.</p>
-            </div>
-            <div class="glass p-6 rounded-xl text-center">
-                <h2 class="text-2xl font-bold primary mb-2">Decode the Specs</h2>
-                <p class="text-gray-300">Confused by CPUs, GPUs, RAM, and SSDs in laptops? We'll break down the jargon and help you understand what matters most.</p>
-            </div>
-            <div class="glass p-6 rounded-xl text-center">
-                <h2 class="text-2xl font-bold primary mb-2">Future-Proofing Advice</h2>
-                <p class="text-gray-300">We'll advise on laptops that offer good longevity and potential for minor upgrades where applicable.</p>
-            </div>
+        <!-- Search & Filters -->
+        <section class="max-w-7xl mx-auto mb-8 px-4">
+          <input type="text" id="searchInput" placeholder="Search laptops..." class="w-full p-3 rounded-lg mb-4 bg-slate-800 text-white placeholder-gray-400">
+          <div class="flex flex-wrap gap-4 mb-4">
+            <button class="filterBtn bg-primary px-4 py-2 rounded-lg" data-filter="all">All</button>
+            <button class="filterBtn bg-primary px-4 py-2 rounded-lg" data-filter="gaming-workstation">Gaming/Workstation</button>
+            <button class="filterBtn bg-primary px-4 py-2 rounded-lg" data-filter="office">Office</button>
+            <button class="filterBtn bg-primary px-4 py-2 rounded-lg" data-filter="leased">Leased</button>
+          </div>
         </section>
 
-        <section class="text-center my-12">
-            <h2 class="text-3xl font-bold primary mb-4">Ready for Your Perfect Laptop?</h2>
-            <p class="text-xl text-gray-300 mb-6">Let us help you make an informed decision. Contact us for a laptop buying consultation.</p>
-            <a href="javascript:void(0);" onclick="openContactModal()" class="bg-primary text-white px-8 py-4 rounded-full text-lg shadow-lg hover:scale-105 transition">Get Laptop Buying Advice</a>
+        <!-- Laptop Cards Grid -->
+        <section class="max-w-7xl mx-auto px-4">
+          <div id="laptopGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Microsoft Surface Laptop Go -->
+            <div class="product-card glass" data-category="leased"data-stars="4" data-ratings="36" onclick="openLaptopModal('microsoft_surface_laptop_go')">
+              <!-- Corrected image tag -->
+              <img src="https://www.x1smartech.com/cdn/shop/files/61qGlBnUwlL._SL1500_1220x_crop_center.jpg?v=1755528894" alt="Microsoft Surface Laptop Go" class="mx-auto">
+              <!-- Main Content Area -->
+              <div class="card-content">
+                <h3 class="text-xl font-bold text-blue-500 mb-2">Microsoft Surface Laptop Go</h3>
+                <span class="leased-tag">leased</span>
+                <p class="text-sm text-gray-400 mb-3">10th Gen Intel i5 | 8GB RAM | 256GB SSD</p>
+              </div>
+              <!-- End Main Content Area -->
+              <!-- Bottom Section (Fixed Position) -->
+              <div class="bottom-section">
+                <!-- Star Rating and Ratings Text Container -->
+                <div class="flex items-center justify-center">
+                   <div class="star-rating">
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star empty">★</span> <!-- Default 4 stars -->
+                   </div>
+                   <!-- Ratings Text: Only number of ratings -->
+                   <span class="ratings-text">(36 ratings)</span>
+                </div>
+                <p class="text-2xl font-semibold text-white mb-4"><span class="line-through text-gray-500">₹1,24,990</span> ₹32,850</p>
+                <!-- Buy Now Button -->
+                <button onclick="openContactModal(event)" class="mt-2 bg-primary text-white py-2.5 rounded-lg text-lg font-semibold hover:bg-blue-700 transition w-full">Buy Now</button>
+              </div>
+              <!-- End Bottom Section -->
+            </div>
+
+            <!-- HP Elitebook X360 1040 G8 -->
+            <div class="product-card glass" data-category="leased,office" data-stars="5" data-ratings="24" onclick="openLaptopModal('hp_elitebook_x360_1040_g8')">
+              <!-- Corrected image tag -->
+              <img src="https://www.x1smartech.com/cdn/shop/files/22_30514c5b-81dd-4f5d-af6a-1c80b6fc0b61_1220x_crop_center.png?v=1723614436" class="mx-auto">
+              <!-- Main Content Area -->
+              <div class="card-content">
+                <h3 class="text-xl font-bold text-blue-500 mb-2">HP Elitebook X360 1040 G8</h3>
+                <span class="leased-tag">leased</span>
+                <p class="text-sm text-gray-400 mb-3">Intel i7 11th Gen | 16GB RAM | 512GB SSD</p>
+              </div>
+              <!-- End Main Content Area -->
+              <!-- Bottom Section (Fixed Position) -->
+              <div class="bottom-section">
+                <!-- Star Rating and Ratings Text Container -->
+                <div class="flex items-center justify-center">
+                   <div class="star-rating">
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span> <!-- Default 5 stars -->
+                   </div>
+                   <!-- Ratings Text: Only number of ratings -->
+                   <span class="ratings-text">(24 ratings)</span>
+                </div>
+                <p class="text-2xl font-semibold text-white mb-4"><span class="line-through text-gray-500">₹2,19,000</span> ₹58,850</p>
+                <!-- Buy Now Button -->
+                <button onclick="openContactModal(event)" class="mt-2 bg-primary text-white py-2.5 rounded-lg text-lg font-semibold hover:bg-blue-700 transition w-full">Buy Now</button>
+              </div>
+              <!-- End Bottom Section -->
+            </div>
+
+            <!-- Lenovo P53 Studio Workstation -->
+            <div class="product-card glass" data-category="leased,workstation" data-stars="5" data-ratings="18" onclick="openLaptopModal('lenovo_p53_studio_workstation')">
+              <!-- Corrected image tag -->
+              <img src="https://hilaptop.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDA1IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3e4bc5f928e92337e1874eab1b81b05c6977a97c/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRFRNMU1IZzBOamcrQmpzR1ZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--5a841eb3657df1df78aee6c19346073971f8c235/22252.jpg" alt="Lenovo P53 Studio Workstation" class="mx-auto">
+              <!-- Main Content Area -->
+              <div class="card-content">
+                <h3 class="text-xl font-bold text-blue-500 mb-2">Lenovo P53 Studio Workstation</h3>
+                <span class="leased-tag">leased</span>
+                <p class="text-sm text-gray-400 mb-3">Intel i7 9850H | 16GB RAM | 512GB SSD</p>
+              </div>
+              <!-- End Main Content Area -->
+              <!-- Bottom Section (Fixed Position) -->
+              <div class="bottom-section">
+                 <!-- Star Rating and Ratings Text Container -->
+                <div class="flex items-center justify-center">
+                   <div class="star-rating">
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span> <!-- Default 5 stars -->
+                   </div>
+                   <!-- Ratings Text: Only number of ratings -->
+                   <span class="ratings-text">(18 ratings)</span>
+                </div>
+                <p class="text-2xl font-semibold text-white mb-4"><span class="line-through text-gray-500">₹1,50,000</span> ₹54,850</p>
+                <!-- Buy Now Button -->
+                <button onclick="openContactModal(event)" class="mt-2 bg-primary text-white py-2.5 rounded-lg text-lg font-semibold hover:bg-blue-700 transition w-full">Buy Now</button>
+              </div>
+              <!-- End Bottom Section -->
+            </div>
+
+            <!-- MacBook Pro i9 15-inch 2019 -->
+            <div class="product-card glass" data-category="leased,office"data-stars="4" data-ratings="42" onclick="openLaptopModal('macbook_pro_i9_15inch_2019')">
+              <!-- Corrected image tag -->
+              <img src="https://www.x1smartech.com/cdn/shop/files/3_e8782814-b3c6-419d-ae55-0b11e30baf0b_1220x_crop_center.png?v=1708755937" alt="MacBook Pro i9 15-inch 2019" class="mx-auto">
+              <!-- Main Content Area -->
+              <div class="card-content">
+                <h3 class="text-xl font-bold text-blue-500 mb-2">MacBook Pro i9 15-inch 2019</h3>
+                <span class="leased-tag">leased</span>
+                <p class="text-sm text-gray-400 mb-3">Intel i9 | 16GB RAM | 512GB SSD</p>
+              </div>
+              <!-- End Main Content Area -->
+              <!-- Bottom Section (Fixed Position) -->
+              <div class="bottom-section">
+                <!-- Star Rating and Ratings Text Container -->
+                <div class="flex items-center justify-center">
+                   <div class="star-rating">
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star empty">★</span> <!-- Default 4 stars -->
+                   </div>
+                   <!-- Ratings Text: Only number of ratings -->
+                   <span class="ratings-text">(42 ratings)</span>
+                </div>
+                <p class="text-2xl font-semibold text-white mb-4"><span class="line-through text-gray-500">₹2,99,000</span> ₹68,850</p>
+                <!-- Buy Now Button -->
+                <button onclick="openContactModal(event)" class="mt-2 bg-primary text-white py-2.5 rounded-lg text-lg font-semibold hover:bg-blue-700 transition w-full">Buy Now</button>
+              </div>
+              <!-- End Bottom Section -->
+            </div>
+
+            <!-- MacBook Pro i7 15-inch Late 2018 -->
+            <div class="product-card glass" data-category="leased,office" data-stars="5" data-ratings="29" onclick="openLaptopModal('macbook_pro_i7_15inch_2018')">
+              <!-- Corrected image tag -->
+              <img src="https://www.x1smartech.com/cdn/shop/files/3_6b5a55c7-dcdd-41eb-99e5-fd9a39668f66_1220x_crop_center.png?v=1708755609" alt="MacBook Pro i7 15-inch Late 2018" class="mx-auto">
+              <!-- Main Content Area -->
+              <div class="card-content">
+                <h3 class="text-xl font-bold text-blue-500 mb-2">MacBook Pro i7 15-inch Late 2018</h3>
+                <span class="leased-tag">leased</span>
+                <p class="text-sm text-gray-400 mb-3">Intel i7 | 16GB RAM | 512GB SSD</p>
+              </div>
+              <!-- End Main Content Area -->
+              <!-- Bottom Section (Fixed Position) -->
+              <div class="bottom-section">
+                <!-- Star Rating and Ratings Text Container -->
+                <div class="flex items-center justify-center">
+                   <div class="star-rating">
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span> <!-- Default 5 stars -->
+                   </div>
+                   <!-- Ratings Text: Only number of ratings -->
+                   <span class="ratings-text">(29 ratings)</span>
+                </div>
+                <p class="text-2xl font-semibold text-white mb-4"><span class="line-through text-gray-500">₹2,49,000</span> ₹56,850</p>
+                <!-- Buy Now Button -->
+                <button onclick="openContactModal(event)" class="mt-2 bg-primary text-white py-2.5 rounded-lg text-lg font-semibold hover:bg-blue-700 transition w-full">Buy Now</button>
+              </div>
+              <!-- End Bottom Section -->
+            </div>
+
+            <!-- HP Probook 440 G7 -->
+            <div class="product-card glass" data-category="leased,office" data-stars="4" data-ratings="15" onclick="openLaptopModal('hp_probook_440_g7')">
+              <!-- Corrected image tag -->
+              <img src="https://www.x1smartech.com/cdn/shop/files/1_1b898b83-13ab-4928-a45c-2a7cada16541_1220x_crop_center.png?v=1697438826" alt="HP Probook 440 G7" class="mx-auto">
+              <!-- Main Content Area -->
+              <div class="card-content">
+                <h3 class="text-xl font-bold text-blue-500 mb-2">HP Probook 440 G7</h3>
+                <span class="leased-tag">leased</span>
+                <p class="text-sm text-gray-400 mb-3">Intel i7 10th Gen | 16GB RAM | 512GB SSD</p>
+              </div>
+              <!-- End Main Content Area -->
+              <!-- Bottom Section (Fixed Position) -->
+              <div class="bottom-section">
+                <!-- Star Rating and Ratings Text Container -->
+                <div class="flex items-center justify-center">
+                   <div class="star-rating">
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star empty">★</span> <!-- Default 4 stars -->
+                   </div>
+                   <!-- Ratings Text: Only number of ratings -->
+                   <span class="ratings-text">(15 ratings)</span>
+                </div>
+                <p class="text-2xl font-semibold text-white mb-4"><span class="line-through text-gray-500">₹99,000</span> ₹46,850</p>
+                <!-- Buy Now Button -->
+                <button onclick="openContactModal(event)" class="mt-2 bg-primary text-white py-2.5 rounded-lg text-lg font-semibold hover:bg-blue-700 transition w-full">Buy Now</button>
+              </div>
+              <!-- End Bottom Section -->
+            </div>
+
+            <!-- Dell Precision 5550 Studio Workstation -->
+            <div class="product-card glass" data-category="leased,workstation" data-stars="5" data-ratings="21" onclick="openLaptopModal('dell_precision_5550')">
+              <!-- Corrected image tag -->
+              <img src="https://www.x1smartech.com/cdn/shop/files/IMG-20240611-WA0033_1220x_crop_center.jpg?v=1718103216" alt="Dell Precision 5550 Studio Workstation" class="mx-auto">
+              <!-- Main Content Area -->
+              <div class="card-content">
+                <h3 class="text-xl font-bold text-blue-500 mb-2">Dell Precision 5550 Studio Workstation</h3>
+                <span class="leased-tag">leased</span>
+                <p class="text-sm text-gray-400 mb-3">Intel i7 8650U | 16GB RAM | 512GB SSD</p>
+              </div>
+              <!-- End Main Content Area -->
+              <!-- Bottom Section (Fixed Position) -->
+              <div class="bottom-section">
+                <!-- Star Rating and Ratings Text Container -->
+                <div class="flex items-center justify-center">
+                   <div class="star-rating">
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span> <!-- Default 5 stars -->
+                   </div>
+                   <!-- Ratings Text: Only number of ratings -->
+                   <span class="ratings-text">(21 ratings)</span>
+                </div>
+                <p class="text-2xl font-semibold text-white mb-4"><span class="line-through text-gray-500">₹2,24,990</span> ₹59,850</p>
+                <!-- Buy Now Button -->
+                <button onclick="openContactModal(event)" class="mt-2 bg-primary text-white py-2.5 rounded-lg text-lg font-semibold hover:bg-blue-700 transition w-full">Buy Now</button>
+              </div>
+              <!-- End Bottom Section -->
+            </div>
+
+            <!-- HP Elitebook 830 G5 -->
+            <div class="product-card glass" data-category="leased,office" data-stars="5" data-ratings="33" onclick="openLaptopModal('hp_elitebook_830_g5')">
+              <!-- Corrected image tag -->
+              <img src="https://www.x1smartech.com/cdn/shop/files/5_194489eb-feda-4972-aafd-828540fa3796_1220x_crop_center.png?v=1695992838" alt="HP Elitebook 830 G5" class="mx-auto">
+              <!-- Main Content Area -->
+              <div class="card-content">
+                <h3 class="text-xl font-bold text-blue-500 mb-2">HP Elitebook 830 G5</h3>
+                <span class="leased-tag">leased</span>
+                <p class="text-sm text-gray-400 mb-3">Intel i7 10th Gen | 16GB RAM | 512GB SSD</p>
+              </div>
+              <!-- End Main Content Area -->
+              <!-- Bottom Section (Fixed Position) -->
+              <div class="bottom-section">
+                <!-- Star Rating and Ratings Text Container -->
+                <div class="flex items-center justify-center">
+                   <div class="star-rating">
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span> <!-- Default 5 stars -->
+                   </div>
+                   <!-- Ratings Text: Only number of ratings -->
+                   <span class="ratings-text">(33 ratings)</span>
+                </div>
+                <p class="text-2xl font-semibold text-white mb-4"><span class="line-through text-gray-500">₹1,09,000</span> ₹29,850</p>
+                <!-- Buy Now Button -->
+                <button onclick="openContactModal(event)" class="mt-2 bg-primary text-white py-2.5 rounded-lg text-lg font-semibold hover:bg-blue-700 transition w-full">Buy Now</button>
+              </div>
+              <!-- End Bottom Section -->
+            </div>
+
+            <!-- Dell Precision 5530 Mobile Workstation -->
+            <div class="product-card glass" data-category="leased,workstation" data-stars="5" data-ratings="12" onclick="openLaptopModal('dell_precision_5530')">
+              <!-- Corrected image tag -->
+              <img src="https://www.x1smartech.com/cdn/shop/files/1_0d1622e4-124f-4647-b9b7-07967122a0c6_1220x_crop_center.png?v=1694152958" alt="Dell Precision 5530 Mobile Workstation" class="mx-auto">
+              <!-- Main Content Area -->
+              <div class="card-content">
+                <h3 class="text-xl font-bold text-blue-500 mb-2">Dell Precision 5530 Mobile Workstation</h3>
+                <span class="leased-tag">leased</span>
+                <p class="text-sm text-gray-400 mb-3">Intel i7 10th Gen | 32GB RAM | 1TB SSD</p>
+              </div>
+              <!-- End Main Content Area -->
+              <!-- Bottom Section (Fixed Position) -->
+              <div class="bottom-section">
+                <!-- Star Rating and Ratings Text Container -->
+                <div class="flex items-center justify-center">
+                   <div class="star-rating">
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span> <!-- Default 5 stars -->
+                   </div>
+                   <!-- Ratings Text: Only number of ratings -->
+                   <span class="ratings-text">(12 ratings)</span>
+                </div>
+                <p class="text-2xl font-semibold text-white mb-4"><span class="line-through text-gray-500">₹1,90,000</span> ₹53,850</p>
+                <!-- Buy Now Button -->
+                <button onclick="openContactModal(event)" class="mt-2 bg-primary text-white py-2.5 rounded-lg text-lg font-semibold hover:bg-blue-700 transition w-full">Buy Now</button>
+              </div>
+              <!-- End Bottom Section -->
+            </div>
+
+            <!-- Dell Latitude 7490 i7 -->
+            <div class="product-card glass" data-category="leased,office" data-stars="5" data-ratings="27" onclick="openLaptopModal('dell_latitude_7490_i7')">
+              <!-- Corrected image tag -->
+              <img src="https://www.x1smartech.com/cdn/shop/files/2_b039592e-c3b2-44ef-abca-ddb1f328af45_1220x_crop_center.png?v=1694152805" alt="Dell Latitude 7490 i7" class="mx-auto">
+              <!-- Main Content Area -->
+              <div class="card-content">
+                <h3 class="text-xl font-bold text-blue-500 mb-2">Dell Latitude 7490 i7</h3>
+                <span class="leased-tag">leased</span>
+                <p class="text-sm text-gray-400 mb-3">Intel i7 8650U | 16GB RAM | 512GB SSD</p>
+              </div>
+              <!-- End Main Content Area -->
+              <!-- Bottom Section (Fixed Position) -->
+              <div class="bottom-section">
+                <!-- Star Rating and Ratings Text Container -->
+                <div class="flex items-center justify-center">
+                   <div class="star-rating">
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span> <!-- Default 5 stars -->
+                   </div>
+                   <!-- Ratings Text: Only number of ratings -->
+                   <span class="ratings-text">(27 ratings)</span>
+                </div>
+                <p class="text-2xl font-semibold text-white mb-4"><span class="line-through text-gray-500">₹1,19,000</span> ₹39,850</p>
+                <!-- Buy Now Button -->
+                <button onclick="openContactModal(event)" class="mt-2 bg-primary text-white py-2.5 rounded-lg text-lg font-semibold hover:bg-blue-700 transition w-full">Buy Now</button>
+              </div>
+              <!-- End Bottom Section -->
+            </div>
+
+            <!-- Dell Latitude 7490 Core i5 -->
+            <div class="product-card glass" data-category="leased,office" data-stars="4" data-ratings="19" onclick="openLaptopModal('dell_latitude_7490_core_i5')">
+              <!-- Corrected image tag -->
+              <img src="https://www.x1smartech.com/cdn/shop/files/3_12e8c544-a06b-433b-a1c9-b738afabb4b9_1220x_crop_center.png?v=1694152680" alt="Dell Latitude 7490 Core i5" class="mx-auto">
+              <!-- Main Content Area -->
+              <div class="card-content">
+                <h3 class="text-xl font-bold text-blue-500 mb-2">Dell Latitude 7490 Core i5</h3>
+                <span class="leased-tag">leased</span>
+                <p class="text-sm text-gray-400 mb-3">Intel i5 8650U | 16GB RAM | 512GB SSD</p>
+              </div>
+              <!-- End Main Content Area -->
+              <!-- Bottom Section (Fixed Position) -->
+              <div class="bottom-section">
+                <!-- Star Rating and Ratings Text Container -->
+                <div class="flex items-center justify-center">
+                   <div class="star-rating">
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star empty">★</span> <!-- Default 4 stars -->
+                   </div>
+                   <!-- Ratings Text: Only number of ratings -->
+                   <span class="ratings-text">(19 ratings)</span>
+                </div>
+                <p class="text-2xl font-semibold text-white mb-4"><span class="line-through text-gray-500">₹99,000</span> ₹32,850</p>
+                <!-- Buy Now Button -->
+                <button onclick="openContactModal(event)" class="mt-2 bg-primary text-white py-2.5 rounded-lg text-lg font-semibold hover:bg-blue-700 transition w-full">Buy Now</button>
+              </div>
+              <!-- End Bottom Section -->
+            </div>
+
+            <!-- HP Elitebook X360 1030 G4 -->
+            <div class="product-card glass" data-category="leased,office" data-stars="5" data-ratings="14" onclick="openLaptopModal('hp_elitebook_x360_1030_g4')">
+              <!-- Corrected image tag -->
+              <img src="https://www.x1smartech.com/cdn/shop/files/IMG-20240611-WA0004_1220x_crop_center.jpg?v=1718102118" alt="HP Elitebook X360 1030 G4" class="mx-auto">
+              <!-- Main Content Area -->
+              <div class="card-content">
+                <h3 class="text-xl font-bold text-blue-500 mb-2">HP Elitebook X360 1030 G4</h3>
+                <span class="leased-tag">leased</span>
+                <p class="text-sm text-gray-400 mb-3">Intel i7 8th Gen | 16GB RAM | 1TB SSD</p>
+              </div>
+              <!-- End Main Content Area -->
+              <!-- Bottom Section (Fixed Position) -->
+              <div class="bottom-section">
+                <!-- Star Rating and Ratings Text Container -->
+                <div class="flex items-center justify-center">
+                   <div class="star-rating">
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span> <!-- Default 5 stars -->
+                   </div>
+                   <!-- Ratings Text: Only number of ratings -->
+                   <span class="ratings-text">(14 ratings)</span>
+                </div>
+                <p class="text-2xl font-semibold text-white mb-4"><span class="line-through text-gray-500">₹89,000</span> ₹56,850</p>
+                <!-- Buy Now Button -->
+                <button onclick="openContactModal(event)" class="mt-2 bg-primary text-white py-2.5 rounded-lg text-lg font-semibold hover:bg-blue-700 transition w-full">Buy Now</button>
+              </div>
+              <!-- End Bottom Section -->
+            </div>
+
+            <!-- HP Elite x2 1012 G2 (leased, office) -->
+            <div class="product-card glass" data-category="leased" data-stars="5" data-ratings="22" onclick="openLaptopModal('hp_elite_x2_1012_g2')">
+              <!-- Corrected image tag -->
+              <img src="https://www.x1smartech.com/cdn/shop/files/1_dc3c7c7e-bab4-4bce-8140-46745fdc06e5_1220x_crop_center.png?v=1697209278" alt="HP Elite x2 1012 G2" class="mx-auto">
+              <!-- Main Content Area -->
+              <div class="card-content">
+                <h3 class="text-xl font-bold text-blue-500 mb-2">HP Elite x2 1012 G2</h3>
+                <span class="leased-tag">leased</span>
+                <p class="text-sm text-gray-400 mb-3">Intel Core i5 7th gen | 8GB RAM | 256GB SSD</p>
+              </div>
+              <!-- End Main Content Area -->
+              <!-- Bottom Section (Fixed Position) -->
+              <div class="bottom-section">
+                <!-- Star Rating and Ratings Text Container -->
+                <div class="flex items-center justify-center">
+                   <div class="star-rating">
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span> <!-- Default 5 stars -->
+                   </div>
+                   <!-- Ratings Text: Only number of ratings -->
+                   <span class="ratings-text">(22 ratings)</span>
+                </div>
+                <p class="text-2xl font-semibold text-white mb-4"><span class="line-through text-gray-500">₹1,89,000</span> ₹29,850</p>
+                <!-- Buy Now Button -->
+                <button onclick="openContactModal(event)" class="mt-2 bg-primary text-white py-2.5 rounded-lg text-lg font-semibold hover:bg-blue-700 transition w-full">Buy Now</button>
+              </div>
+              <!-- End Bottom Section -->
+            </div>
+
+            <!-- Lenovo LOQ Gaming Laptop -->
+            <div class="product-card glass" data-category="gaming-workstation" data-stars="5" data-ratings="38" onclick="openLaptopModal('lenovo_loq')">
+              <!-- Corrected image tag -->
+              <img src="https://www.x1smartech.com/cdn/shop/files/IMG-20240601-WA0023_1220x_crop_center.jpg?v=1717581765" alt="Lenovo LOQ Gaming Laptop" class="mx-auto">
+              <!-- Main Content Area -->
+              <div class="card-content">
+                <h3 class="text-xl font-bold text-blue-500 mb-2">Lenovo LOQ Gaming Laptop</h3>
+                <p class="text-sm text-gray-400 mb-3">Intel Core i5-12th | 16GB RAM | 512GB SSD | RTX 4060</p>
+              </div>
+              <!-- End Main Content Area -->
+              <!-- Bottom Section (Fixed Position) -->
+              <div class="bottom-section">
+                <!-- Star Rating and Ratings Text Container -->
+                <div class="flex items-center justify-center">
+                   <div class="star-rating">
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span>
+                     <span class="star">★</span> <!-- Default 5 stars -->
+                   </div>
+                   <!-- Ratings Text: Only number of ratings -->
+                   <span class="ratings-text">(38 ratings)</span>
+                </div>
+                <p class="text-2xl font-semibold text-white mb-4"><span class="line-through text-gray-500">₹89,000</span> ₹63,999</p>
+                <!-- Buy Now Button -->
+                <button onclick="openContactModal(event)" class="mt-2 bg-primary text-white py-2.5 rounded-lg text-lg font-semibold hover:bg-blue-700 transition w-full">Buy Now</button>
+              </div>
+              <!-- End Bottom Section -->
+            </div>
+          </div>
         </section>
+
+        <!-- Laptop Modal -->
+        <div id="laptopModal" class="modal-container">
+          <div class="modal-content">
+            <button onclick="closeLaptopModal()" class="modal-close-button">&times;</button>
+            <div>
+              <h2 id="modalTitle" class="text-2xl font-bold text-primary mb-4"></h2>
+              <!-- Container for dynamic stars and ratings text in modal -->
+              <div id="modalStarRating" class="flex items-center justify-start my-2"></div>
+              <!-- Description element -->
+              <p id="modalDescription" class="text-gray-300 mb-4"></p>
+              <h4 class="text-lg font-semibold mb-2">Specs</h4>
+              <ul id="modalSpecs" class="list-disc ml-5 space-y-1 mb-4 text-gray-300 text-sm"></ul>
+              <h4 class="text-lg font-semibold mb-2">Price</h4>
+              <p id="modalPrice" class="text-2xl font-semibold text-white mb-4"></p>
+            </div>
+            <div class="flex flex-col items-center justify-center">
+              <!-- Main Image Container -->
+              <div class="relative mb-4">
+                <img id="modalImage" src="" alt="Laptop Image" class="rounded-xl w-full max-w-sm h-64 object-contain">
+                <!-- Image Counter -->
+                <div id="imageCounter" class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded"></div>
+              </div>
+              <!-- Thumbnail Gallery -->
+              <div id="thumbnailGallery" class="flex flex-wrap justify-center gap-2 mb-4 max-w-sm">
+                <!-- Thumbnails will be populated by JavaScript -->
+              </div>
+              <button onclick="openContactModal()" class="mt-6 bg-primary text-white w-full max-w-sm py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition">Buy Now</button>
+            </div>
+          </div>
+        </div>
     </main>
-    
+
     <footer id="contact" class="w-full px-6 py-12 bg-[#0d1117] text-center">
         <h2 class="text-3xl font-bold text-white mb-4">Contact Us</h2>
         <div class="flex flex-col items-center space-y-2">
@@ -145,7 +778,7 @@
         </div>
         <p class="text-sm text-gray-500 mt-6">&copy; 2025 Voxen Computers. Built for performance.</p>
     </footer>
-    
+
     <div id="contactModal" class="fixed inset-0 bg-black bg-opacity-75 backdrop-blur-md flex justify-center items-center z-50 hidden">
       <div class="bg-slate-800 rounded-2xl max-w-sm w-full mx-4 p-8 text-center relative">
           <button onclick="closeContactModal()" class="absolute top-4 right-6 text-2xl text-gray-300 hover:text-white">&times;</button>
@@ -168,21 +801,286 @@
     </div>
 
     <script>
-      const contactModal = document.getElementById('contactModal');
-      function openContactModal() {
-          contactModal.classList.remove('hidden');
-      }
-      function closeContactModal() {
-          contactModal.classList.add('hidden');
-      }
-      contactModal.addEventListener('click', function(event) {
-          if (event.target === this) {
-              closeContactModal();
+      // Search & Filter Logic
+      const filterButtons = document.querySelectorAll('.filterBtn');
+      const laptopGrid = document.getElementById('laptopGrid');
+
+      // Enhanced search function that searches both name and specs
+      function performSearch(term) {
+        const cards = laptopGrid.querySelectorAll('.product-card');
+        const searchTerm = term.toLowerCase();
+
+        cards.forEach(c => {
+          const name = c.querySelector('h3').innerText.toLowerCase();
+          const specs = c.querySelector('p.text-sm.text-gray-400').innerText.toLowerCase();
+
+          // Check if search term matches either name or specs
+          if(searchTerm === '' || name.includes(searchTerm) || specs.includes(searchTerm)) {
+            c.style.display = 'flex';
+          } else {
+            c.style.display = 'none';
           }
+        });
+      }
+
+      filterButtons.forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const filter = btn.getAttribute('data-filter');
+          const cards = laptopGrid.querySelectorAll('.product-card');
+          cards.forEach(c=>{
+            // Handle multi-category filtering
+            const categories = c.dataset.category.split(',');
+
+            if(filter==='all' ||
+               (filter==='gaming-workstation' && (categories.includes('gaming') || categories.includes('workstation'))) ||
+               categories.includes(filter) ||
+               (filter==='leased' && categories.includes('leased')) ||
+               (filter==='office' && categories.includes('office')) ||
+               (filter==='workstation' && categories.includes('workstation'))){
+              c.style.display='flex';
+            }
+            else{
+              c.style.display='none';
+            }
+          });
+        });
       });
+
+      document.getElementById('searchInput').addEventListener('input', function(){
+        performSearch(this.value);
+      });
+
+      // Laptop Modal Data with Descriptions (Keeping your desired images)
+      const laptopData = {
+        microsoft_surface_laptop_go: {
+          title: "Microsoft Surface Laptop Go",
+          description: "A sleek and portable laptop perfect for students and professionals on the go. Combines style with essential performance.",
+          specs: "Processor: 10th Gen Intel i5\nRAM: 8GB DDR4\nStorage: 256GB NVMe SSD\nDisplay: 12.4\" Touchscreen\nOS: Windows 10 Home\nColor: Platinum Grey",
+          price: "₹32,850 (Original: ₹1,24,990)",
+          // Keeping the image for the modal
+          img: "https://www.x1smartech.com/cdn/shop/files/61qGlBnUwlL._SL1500_1220x_crop_center.jpg?v=1755528894"
+        },
+        hp_elitebook_x360_1040_g8: {
+          title: "HP Elitebook X360 1040 G8",
+          description: "A versatile 2-in-1 business laptop with powerful performance and 360-degree flip design for multiple usage modes.",
+          specs: "Processor: Intel i7 11th Gen\nRAM: 16GB DDR4\nStorage: 512GB NVMe SSD\nDisplay: 14\" FHD\nOS: Windows 11 Pro\nColor: Silver",
+          price: "₹58,850 (Original: ₹2,19,000)",
+          img: "https://www.x1smartech.com/cdn/shop/files/22_30514c5b-81dd-4f5d-af6a-1c80b6fc0b61_1220x_crop_center.png?v=1723614436"
+        },
+        lenovo_p53_studio_workstation: {
+          title: "Lenovo P53 Studio Workstation",
+          description: "A high-performance workstation designed for demanding professional applications like CAD, 3D rendering, and video editing.",
+          specs: "Processor: Intel i7 9850H\nRAM: 16GB DDR4\nStorage: 512GB NVMe SSD\nDisplay: 15.6\" FHD\nOS: Windows 11 Pro\nGraphics: 4GB NVIDIA Quadro",
+          price: "₹54,850 (Original: ₹1,50,000)",
+          img: "https://hilaptop.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDA1IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3e4bc5f928e92337e1874eab1b81b05c6977a97c/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRFRNMU1IZzBOamcrQmpzR1ZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--5a841eb3657df1df78aee6c19346073971f8c235/22252.jpg"
+        },
+        macbook_pro_i9_15inch_2019: {
+          title: "MacBook Pro i9 15-inch 2019",
+          description: "A powerful MacBook Pro with exceptional performance for creative professionals and developers working with resource-intensive applications.",
+          specs: "Chip: Intel i9\nRAM: 16GB DDR4\nStorage: 512GB NVMe SSD\nDisplay: 15.4\" Retina\nOS: macOS Big Sur\nColor: Space Gray",
+          price: "₹69,850 (Original: ₹2,99,000)",
+          img: "https://www.x1smartech.com/cdn/shop/files/3_e8782814-b3c6-419d-ae55-0b11e30baf0b_1220x_crop_center.png?v=1708755937"
+        },
+        macbook_pro_i7_15inch_2018: {
+          title: "MacBook Pro i7 15-inch Late 2018",
+          description: "A reliable MacBook Pro offering solid performance for everyday tasks, creative work, and development on macOS.",
+          specs: "Processor: Intel i7\nRAM: 16GB DDR4\nStorage: 512GB NVMe SSD\nDisplay: 15.4\" Retina\nOS: macOS Catalina\nColor: Space Gray",
+          price: "₹56,850 (Original: ₹2,49,000)",
+          img: "https://www.x1smartech.com/cdn/shop/files/3_6b5a55c7-dcdd-41eb-99e5-fd9a39668f66_1220x_crop_center.png?v=1708755609"
+        },
+        hp_probook_440_g7: {
+          title: "HP Probook 440 G7",
+          description: "A durable and secure business laptop with excellent performance and battery life for professionals.",
+          specs: "Processor: Intel i7 10th Gen\nRAM: 16GB DDR4\nStorage: 512GB NVMe SSD\nDisplay: 14\" FHD\nOS: Windows 11 Pro\nColor: Silver",
+          price: "₹46,850 (Original: ₹99,000)",
+          img: "https://www.x1smartech.com/cdn/shop/files/1_1b898b83-13ab-4928-a45c-2a7cada16541_1220x_crop_center.png?v=1697438826"
+        },
+        dell_precision_5550: {
+          title: "Dell Precision 5550 Studio Workstation",
+          description: "A mobile workstation optimized for professional creators and engineers requiring reliable performance and ISV certifications.",
+          specs: "Processor: Intel i7 8650U\nRAM: 16GB DDR4\nStorage: 512GB NVMe SSD\nDisplay: 14\" FHD Touch\nOS: Windows 11 Pro\nColor: Black",
+          price: "₹59,850 (Original: ₹2,24,990)",
+          img: "https://www.x1smartech.com/cdn/shop/files/IMG-20240611-WA0033_1220x_crop_center.jpg?v=1718103216"
+        },
+        hp_elitebook_830_g5: {
+          title: "HP Elitebook 830 G5",
+          description: "A premium business laptop with enterprise-grade security and management features for corporate environments.",
+          specs: "Processor: Intel i7 10th Gen\nRAM: 16GB DDR4\nStorage: 512GB NVMe SSD\nDisplay: 14\" FHD\nOS: Windows 11 Pro\nColor: Silver",
+          price: "₹29,850 (Original: ₹1,09,000)",
+          img: "https://www.x1smartech.com/cdn/shop/files/5_194489eb-feda-4972-aafd-828540fa3796_1220x_crop_center.png?v=1695992838"
+        },
+        dell_precision_5530: {
+          title: "Dell Precision 5530 Mobile Workstation",
+          description: "A high-end mobile workstation with massive memory and storage for the most demanding professional applications.",
+          specs: "Processor: Intel i7 10th Gen\nRAM: 32GB DDR4\nStorage: 1TB NVMe SSD\nDisplay: 15.6\" FHD\nOS: Windows 11 Pro\nGraphics: 4GB NVIDIA Quadro",
+          price: "₹53,850 (Original: ₹1,90,000)",
+          img: "https://www.x1smartech.com/cdn/shop/files/1_0d1622e4-124f-4647-b9b7-07967122a0c6_1220x_crop_center.png?v=1694152958"
+        },
+        dell_latitude_7490_i7: {
+          title: "Dell Latitude 7490 i7",
+          description: "A robust and secure business laptop with excellent build quality and performance for enterprise users.",
+          specs: "Processor: Intel i7 8650U\nRAM: 16GB DDR4\nStorage: 512GB NVMe SSD\nDisplay: 14\" FHD\nOS: Windows 11 Pro\nColor: Black",
+          price: "₹39,850 (Original: ₹1,19,000)",
+          img: "https://www.x1smartech.com/cdn/shop/files/2_b039592e-c3b2-44ef-abca-ddb1f328af45_1220x_crop_center.png?v=1694152805"
+        },
+        dell_latitude_7490_core_i5: {
+          title: "Dell Latitude 7490 Core i5",
+          description: "A reliable business laptop offering balanced performance and security features for corporate professionals.",
+          specs: "Processor: Intel i5 8650U\nRAM: 16GB DDR4\nStorage: 512GB NVMe SSD\nDisplay: 14\" FHD\nOS: Windows 11 Pro\nColor: Black",
+          price: "₹32,850 (Original: ₹99,000)",
+          img: "https://www.x1smartech.com/cdn/shop/files/3_12e8c544-a06b-433b-a1c9-b738afabb4b9_1220x_crop_center.png?v=1694152680"
+        },
+        hp_elitebook_x360_1030_g4: {
+          title: "HP Elitebook X360 1030 G4",
+          description: "A premium 2-in-1 convertible laptop with excellent performance and versatility for business and creative tasks.",
+          specs: "Processor: Intel i7 8th Gen\nRAM: 16GB DDR4\nStorage: 1TB NVMe SSD\nDisplay: 13.3\" FHD Touch\nOS: Windows 11 Licensed\nColor: Silver",
+          price: "₹56,850 (Original: ₹89,000)",
+          img: "https://www.x1smartech.com/cdn/shop/files/IMG-20240611-WA0004_1220x_crop_center.jpg?v=1718102118"
+        },
+        hp_elite_x2_1012_g2: {
+          title: "HP Elite x2 1012 G2",
+          description: "A lightweight and portable 2-in-1 detachable tablet/laptop perfect for flexible working and presentations.",
+          specs: "Processor: Intel Core i5 7th gen\nRAM: 8GB DDR4\nStorage: 256GB NVMe SSD\nDisplay: 12.5\" FULL HD Touch Screen\nOS: Windows 11 Pro\nColor: Silver\nType: 2-in-1 Convertible",
+          price: "₹29,850 (Original: ₹1,89,000)",
+          img: "https://www.x1smartech.com/cdn/shop/files/1_dc3c7c7e-bab4-4bce-8140-46745fdc06e5_1220x_crop_center.png?v=1697209278"
+        },
+        lenovo_loq: {
+          title: "Lenovo LOQ Gaming Laptop",
+          description: "An affordable yet powerful gaming laptop designed for serious gamers who demand high performance at a competitive price.",
+          specs: "Processor: Intel Core i5-12450H\nRAM: 16GB DDR4\nStorage: 512GB NVMe SSD\nDisplay: 15.6\" FHD\nGraphics: NVIDIA RTX 4060 8GB\nOS: Windows 11\nColor: Grey\nType: Gaming Laptop",
+          price: "₹63,999 (Original: ₹89,000)",
+          img: "https://www.x1smartech.com/cdn/shop/files/IMG-20240601-WA0023_1220x_crop_center.jpg?v=1717581765"
+        }
+      };
+
+      // --- Updated openLaptopModal function ---
+      function openLaptopModal(id) {
+        const data = laptopData[id];
+        if (!data) return;
+
+        document.getElementById('modalTitle').innerText = data.title;
+        document.getElementById('modalDescription').innerText = data.description;
+
+        // --- Updated Price Parsing and Display ---
+        // Parse the price string to extract original and discounted prices
+        const priceText = data.price;
+        let originalPrice = "";
+        let discountedPrice = "";
+        let priceHTML = "";
+
+        if (priceText.includes("(Original:")) {
+            // Format like "₹99,999 (Original: ₹1,29,000)"
+            const parts = priceText.split(" (Original: ");
+            discountedPrice = parts[0].trim();
+            originalPrice = parts[1].replace(')', '').trim(); // Remove closing parenthesis
+            priceHTML = `<span class="line-through text-gray-500">${originalPrice}</span> ${discountedPrice}`;
+        } else {
+            // Format like "₹99,999"
+            priceHTML = priceText; // Use the whole string if no original price format is found
+        }
+        document.getElementById('modalPrice').innerHTML = priceHTML;
+        // --- End Updated Price Parsing and Display ---
+
+        document.getElementById('modalSpecs').innerHTML = data.specs.split('\n').map(spec => `<li>${spec}</li>`).join('');
+        // Set the image source from the data object
+        document.getElementById('modalImage').src = data.img;
+
+                // --- Use Static Rating Data from Card ---
+        // Get the clicked card element to access its data attributes
+        let starsHTML = '';
+        let ratingsText = '';
+        // Find the card using the ID passed to the function
+        const cardSelector = `.product-card[onclick="openLaptopModal('${id}')"]`;
+        const clickedCard = document.querySelector(cardSelector);
+
+        if (clickedCard) {
+            // Get the star count and ratings count from data attributes
+            // IMPORTANT: You need to add data-stars="X" and data-ratings="Y" to your HTML product cards
+            // Example: <div class="product-card glass" data-category="leased" data-stars="4" data-ratings="36" ...>
+            const starCount = parseInt(clickedCard.dataset.stars, 10);
+            const ratingsCount = clickedCard.dataset.ratings;
+
+            // Validate starCount
+            if (!isNaN(starCount) && starCount >= 0 && starCount <= 5) {
+                // Create full stars
+                for (let i = 0; i < starCount; i++) {
+                    starsHTML += '<span class="star">★</span>';
+                }
+                // Create empty stars
+                const emptyStars = 5 - starCount;
+                for (let i = 0; i < emptyStars; i++) {
+                    starsHTML += '<span class="star empty">★</span>';
+                }
+
+                // Create the ratings text
+                if (ratingsCount !== undefined) {
+                    ratingsText = `(${ratingsCount} ratings)`;
+                } else {
+                    ratingsText = '(0 ratings)'; // Fallback
+                }
+            } else {
+                // Fallback if starCount is invalid or missing data-stars
+                console.warn(`Invalid or missing star count for card '${id}'. Using default.`);
+                starsHTML = '<span class="star empty">★</span>'.repeat(5);
+                ratingsText = '(0 ratings)';
+            }
+        } else {
+            // Fallback if card not found (shouldn't happen normally)
+            console.warn(`Product card for ID '${id}' not found. Using default ratings.`);
+            starsHTML = '<span class="star empty">★</span>'.repeat(5);
+            ratingsText = '(0 ratings)';
+        }
+
+        // Update the modal's star rating display using the data retrieved from the card
+        const modalStarContainer = document.getElementById('modalStarRating');
+        if (modalStarContainer) {
+            modalStarContainer.innerHTML = `
+              <div class="star-rating">
+                ${starsHTML}
+              </div>
+              <span class="ratings-text ml-2">${ratingsText}</span>
+            `;
+        }
+        // --- End Use Static Rating Data from Card ---
+
+        document.getElementById('laptopModal').classList.add('visible');
+        document.body.style.overflow = 'hidden';
+      }
+      // --- End Updated openLaptopModal function ---
+
+      function closeLaptopModal() {
+        document.getElementById('laptopModal').classList.remove('visible');
+        document.body.style.overflow = '';
+      }
+
+      // --- Updated openContactModal function ---
+      function openContactModal(event) {
+        // Prevents the click from bubbling up and potentially triggering card click
+        // if the button is inside the card.
+        if (event) {
+            event.stopPropagation();
+        }
+        document.getElementById('contactModal').classList.remove('hidden');
+      }
+      // --- End Updated openContactModal function ---
+
+      function closeContactModal() {
+        document.getElementById('contactModal').classList.add('hidden');
+      }
+
+      // Close modals when clicking outside
+      document.getElementById('laptopModal').addEventListener('click', function(event) {
+        if (event.target === this) {
+          closeLaptopModal();
+        }
+      });
+
+      document.getElementById('contactModal').addEventListener('click', function(event) {
+        if (event.target === this) {
+          closeContactModal();
+        }
+      });
+
     </script>
 </body>
 </html>
-
-
-
