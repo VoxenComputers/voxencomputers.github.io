@@ -1,0 +1,202 @@
+[
+  {
+    "id": "cpu1",
+    "name": "AMD Ryzen 5 7600X",
+    "category": "CPU",
+    "price": 19500,
+    "image_url": "https://placehold.co/150x150/1e293b/ffffff?text=Ryzen+5+7600X",
+    "compatibility": {
+      "socket": "AM5",
+      "power": 105
+    }
+  },
+  {
+    "id": "cpu2",
+    "name": "AMD Ryzen 7 7800X3D",
+    "category": "CPU",
+    "price": 36500,
+    "image_url": "https://placehold.co/150x150/1e293b/ffffff?text=Ryzen+7+7800X3D",
+    "compatibility": {
+      "socket": "AM5",
+      "power": 120
+    }
+  },
+  {
+    "id": "cpu3",
+    "name": "Intel Core i5-13600K",
+    "category": "CPU",
+    "price": 28000,
+    "image_url": "https://placehold.co/150x150/1e293b/ffffff?text=Core+i5-13600K",
+    "compatibility": {
+      "socket": "LGA1700",
+      "power": 125
+    }
+  },
+  {
+    "id": "cpu4",
+    "name": "Intel Core i7-14700K",
+    "category": "CPU",
+    "price": 39000,
+    "image_url": "https://placehold.co/150x150/1e293b/ffffff?text=Core+i7-14700K",
+    "compatibility": {
+      "socket": "LGA1700",
+      "power": 125
+    }
+  },
+  {
+    "id": "mobo1",
+    "name": "ASUS TUF GAMING B650-PLUS WIFI",
+    "category": "Motherboard",
+    "price": 18500,
+    "image_url": "https://placehold.co/150x150/1e293b/ffffff?text=TUF+B650-PLUS",
+    "compatibility": {
+      "socket": "AM5",
+      "ram_type": "DDR5"
+    }
+  },
+  {
+    "id": "mobo2",
+    "name": "MSI MAG X670E TOMAHAWK WIFI",
+    "category": "Motherboard",
+    "price": 28500,
+    "image_url": "https://placehold.co/150x150/1e293b/ffffff?text=MSI+X670E",
+    "compatibility": {
+      "socket": "AM5",
+      "ram_type": "DDR5"
+    }
+  },
+  {
+    "id": "mobo3",
+    "name": "Gigabyte Z790 AORUS ELITE AX",
+    "category": "Motherboard",
+    "price": 26000,
+    "image_url": "https://placehold.co/150x150/1e293b/ffffff?text=Z790+AORUS",
+    "compatibility": {
+      "socket": "LGA1700",
+      "ram_type": "DDR5"
+    }
+  },
+  {
+    "id": "mobo4",
+    "name": "MSI PRO B760-P WIFI",
+    "category": "Motherboard",
+    "price": 15000,
+    "image_url": "https://placehold.co/150x150/1e293b/ffffff?text=MSI+B760-P",
+    "compatibility": {
+      "socket": "LGA1700",
+      "ram_type": "DDR5"
+    }
+  },
+  {
+    "id": "ram1",
+    "name": "Corsair Vengeance 32GB (2x16GB) DDR5 6000MHz",
+    "category": "RAM",
+    "price": 10500,
+    "image_url": "https://placehold.co/150x150/1e293b/ffffff?text=Corsair+32GB+DDR5",
+    "compatibility": {
+      "ram_type": "DDR5"
+    }
+  },
+  {
+    "id": "ram2",
+    "name": "G.Skill Trident Z5 RGB 32GB (2x16GB) DDR5 6400MHz",
+    "category": "RAM",
+    "price": 12500,
+    "image_url": "https://placehold.co/150x150/1e293b/ffffff?text=G.Skill+32GB+DDR5",
+    "compatibility": {
+      "ram_type": "DDR5"
+    }
+  },
+  {
+    "id": "ram3",
+    "name": "Kingston FURY Beast 16GB (2x8GB) DDR5 5600MHz",
+    "category": "RAM",
+    "price": 6500,
+    "image_url": "https://placehold.co/150x150/1e293b/ffffff?text=Kingston+16GB+DDR5",
+    "compatibility": {
+      "ram_type": "DDR5"
+    }
+  },
+  {
+    "id": "ram4",
+    "name": "TeamGroup T-Force Delta RGB 32GB (2x16GB) DDR5 6000MHz",
+    "category": "RAM",
+    "price": 11000,
+    "image_url": "https://placehold.co/150x150/1e293b/ffffff?text=T-Force+32GB+DDR5",
+    "compatibility": {
+      "ram_type": "DDR5"
+    }
+  },
+  {
+    "id": "gpu1",
+    "name": "NVIDIA GeForce RTX 4070 SUPER 12GB",
+    "category": "GPU",
+    "price": 62000,
+    "image_url": "https://placehold.co/150x150/1e293b/ffffff?text=RTX+4070+SUPER",
+    "compatibility": {
+      "power": 220
+    }
+  },
+  {
+    "id": "gpu2",
+    "name": "AMD Radeon RX 7800 XT 16GB",
+    "category": "GPU",
+    "price": 52000,
+    "image_url": "https://placehold.co/150x150/1e293b/ffffff?text=RX+7800+XT",
+    "compatibility": {
+      "power": 263
+    }
+  },
+  {
+    "id": "storage1",
+    "name": "Samsung 990 PRO 2TB NVMe M.2 SSD",
+    "category": "Storage",
+    "price": 16500,
+    "image_url": "https://placehold.co/150x150/1e293b/ffffff?text=Samsung+2TB+NVMe",
+    "compatibility": {}
+  },
+  {
+    "id": "storage2",
+    "name": "Western Digital WD Blue SN580 1TB NVMe M.2 SSD",
+    "category": "Storage",
+    "price": 6000,
+    "image_url": "https://placehold.co/150x150/1e293b/ffffff?text=WD+1TB+NVMe",
+    "compatibility": {}
+  },
+  {
+    "id": "psu1",
+    "name": "Corsair RM850e 850W 80+ Gold",
+    "category": "PSU",
+    "price": 11000,
+    "image_url": "https://placehold.co/150x150/1e293b/ffffff?text=Corsair+850W",
+    "compatibility": {
+      "wattage": 850
+    }
+  },
+  {
+    "id": "psu2",
+    "name": "EVGA SuperNOVA 750 GT 750W 80+ Gold",
+    "category": "PSU",
+    "price": 8500,
+    "image_url": "https://placehold.co/150x150/1e293b/ffffff?text=EVGA+750W",
+    "compatibility": {
+      "wattage": 750
+    }
+  },
+  {
+    "id": "case1",
+    "name": "NZXT H5 Flow Compact ATX Mid-Tower",
+    "category": "Case",
+    "price": 8000,
+    "image_url": "https://placehold.co/150x150/1e293b/ffffff?text=NZXT+H5+Flow",
+    "compatibility": {}
+  },
+  {
+    "id": "case2",
+    "name": "Lian Li Lancool 216 Mid-Tower",
+    "category": "Case",
+    "price": 9500,
+    "image_url": "https://placehold.co/150x150/1e293b/ffffff?text=Lian+Li+216",
+    "compatibility": {}
+  }
+]
